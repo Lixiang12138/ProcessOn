@@ -10,7 +10,6 @@ namespace ProcessOn
     {
         /// <summary>
         /// 应用程序的主入口点。
-        /// test
         /// </summary>
         [STAThread]
         static void Main()
