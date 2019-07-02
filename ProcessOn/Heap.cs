@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProcessOn
 {
-    public class Heap<T> where T:IComparable
+    public class Heap<T>:IContainer<T> where T:IComparable
     {
         const int root = 1;
         private int Size { get; set; }
@@ -61,6 +61,16 @@ namespace ProcessOn
         private int Max(int v1, int v2)
         {
             return Elements[v1].CompareTo(Elements[v2]) < 0 ? v2 : v1;
+        }
+
+        public T[] Array()
+        {
+            return Elements.Take(Size).ToArray();
+        }
+
+        public bool IsEmpty()
+        {
+            return Size == 0;
         }
     }
 }
