@@ -1,9 +1,15 @@
-﻿namespace ProcessOn
+﻿using System;
+using System.Collections.Generic;
+
+namespace ProcessOn
 {
     class ProcessController
     {
+        private static ProcessSimulation a;
         public static Process CreateProcess(string name, int priority, int round, int cputime, int count, int needtime, int createtime, int state)
         {
+            a = new ProcessSimulation();
+            a.OneStepWent += solve;
             return new Process(name, priority, round, cputime, count, needtime, createtime, state);
         }
 
@@ -27,6 +33,10 @@
             }
             return list;
         }
+        public static void solve(List<Process> v1,
+            IContainer<Process> v2, List<Process> v3, List<Process> v4, List<Process>v5)
+        {
 
+        }
     }
 }
