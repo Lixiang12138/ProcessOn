@@ -11,50 +11,48 @@ namespace ProcessOn
 
         private static readonly String[] stateName = {"Finish","Running","Wait","Blocked"};
 
-        private string name;
-        private int priority;
-        private int round;
-        private int cputime;
-        private int count;
-        private int needtime;
-        private int createtime;
-        private int state;//-1:FLAG 0:FINISH 1:RUNNING 2:WAIT 3:BLOCKED
-        Process next;
-
         public Process(string name = null,int priority = -1,int round = -1,int cputime = -1,int count = -1,int needtime = -1,int createtime = -1,int state = -1)
         {
-            this.name = name;
-            this.priority = priority;
-            this.round = round;
-            this.cputime = cputime;
-            this.count = count;
-            this.needtime = needtime;
-            this.createtime = createtime;
-            this.state = state;
-            this.next = null;
+            this.Name = name;
+            this.Priority = priority;
+            this.Round = round;
+            this.Cputime = cputime;
+            this.Count = count;
+            this.Needtime = needtime;
+            this.Createtime = createtime;
+            this.State = state;
+            this.Next = null;
         }
 
-        public int State { get => state; set => state = value; }
-        internal Process Next { get => next; set => next = value; }
+        public int State { get; set; }//-1:FLAG 0:FINISH 1:RUNNING 2:WAIT 3:BLOCKED
+        public int Createtime { get ; }
+        public int Needtime { get ; set ; }
+        public int Count { get ; set ; }
+        public int Cputime { get ; }
+        public int Round { get; set; }
+        public int Priority { get; set; }
+        public string Name { get; }
+        internal Process Next { get; set; }
 
         public int CompareTo(object obj)
         {
-            return priority.CompareTo(obj);
+            return Priority.CompareTo(obj);
         }
         
         public string ShowProcess()
         {
             string str = "";
-            str += name.PadRight(8,' ');
-            str += priority.ToString().PadRight(8,' ');
-            str += createtime.ToString().PadRight(8, ' ');
-            str += (cputime - needtime).ToString().PadRight(8, ' ');
-            str += stateName[state].PadRight(8, ' ');
+            str += Name.PadRight(8,' ');
+            str += Priority.ToString().PadRight(8,' ');
+            str += Createtime.ToString().PadRight(8, ' ');
+            str += (Cputime - Needtime).ToString().PadRight(8, ' ');
+            str += stateName[State].PadRight(8, ' ');
             return str;
         }
+        
     }
 
-    class ProcessHandler
+    class InitProcessHandler
     {
         public static Process CreateProcess(string name, int priority, int round, int cputime, int count, int needtime, int createtime, int state)
         {
@@ -63,7 +61,7 @@ namespace ProcessOn
 
         public static Process CreateRandomProcess(string name,int round,int min_createtime,int max_createtime,int min_cputime,int max_cputime,int min_priority = -1,int max_priority = -1)
         {
-            Random random = new Random();
+            Random random = new Random((int)DateTime.Now.Ticks);
             int createtime = random.Next(min_createtime, max_createtime);
             int cputime = random.Next(min_cputime, max_cputime);
             int priority = random.Next(min_priority, max_priority);

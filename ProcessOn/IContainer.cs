@@ -2,12 +2,10 @@
 
 namespace ProcessOn
 {
-    interface IContainer
+    interface IContainer<T> where T : IComparable
     {
-        Process Top();
-        void Push(Process process);
-        void Pop();
-        bool Contains(String name);
-        Process Get(String name);
+        T Top();
+        void Push(T process);
+        T Pop();
     }
 }
