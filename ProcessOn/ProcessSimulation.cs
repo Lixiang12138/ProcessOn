@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ProcessOn
 {
@@ -13,6 +16,7 @@ namespace ProcessOn
         public int Speed { get; set; }
         public int Time { get; set; }
         protected int Core;
+        public bool Pause { get; set; }
 
         public ProcessSimulation(int speed = 1,int Core = 1)
         {
@@ -43,6 +47,11 @@ namespace ProcessOn
          */
         public void OneTick()
         {
+            if (waitingPool.Count == 0 && runningPool.Count == 0 && blockedPool.Count == 0 && readyPool.IsEmpty())
+            {
+                Pause = true;
+                return;
+            } 
             waitingPool.ForEach(u => { if (u.Createtime <= Time) readyPool.Push(u);}); //将等待队列中有效的进程插入就绪序列
             if (runningPool.Count < Core) //从就绪队列中加入进程
             {
@@ -69,7 +78,7 @@ namespace ProcessOn
                         finishedPool.Add(u);
                         runningPool.Remove(u);
                     }
-                    else if (u.Runningtime > u.Round)//到达时间片时长
+                    else if (u.Round > 0 && u.Runningtime > u.Round)//到达时间片时长
                     {
                         u.Runningtime = 0;
                         OutOfTime(u);
@@ -80,18 +89,17 @@ namespace ProcessOn
             }
         }
 
-        public async System.Threading.Tasks.Task RunAsync()
+        public async void RunAsync()
         {
-            await Run();
-        }
-
-        public System.Threading.Tasks.Task<int> Run()
-        {
-            var task = System.Threading.Tasks.Task.Run(() =>
+            await Task.Run(() =>
             {
-                return 1;
+                int WaitTime = 1000 / Speed;
+                while (!Pause)
+                {
+                    OneTick();
+                    Thread.Sleep(WaitTime);
+                }
             });
-            return task;
         }
     }
 

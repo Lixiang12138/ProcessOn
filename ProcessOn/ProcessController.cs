@@ -1,4 +1,7 @@
-﻿namespace ProcessOn
+﻿using System;
+using System.Collections.Generic;
+
+namespace ProcessOn
 {
     class ProcessController
     {
