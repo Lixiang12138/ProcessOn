@@ -7,5 +7,7 @@ namespace ProcessOn
         T Top();
         void Push(T process);
         T Pop();
+        T[] Array();
+        bool IsEmpty();
     }
 }

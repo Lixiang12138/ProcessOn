@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProcessOn
 {
@@ -19,6 +16,7 @@ namespace ProcessOn
             this.Cputime = cputime;
             this.Count = count;
             this.Needtime = needtime;
+            this.Runningtime = 0;
             this.Createtime = createtime;
             this.State = state;
             this.Next = null;
@@ -31,6 +29,7 @@ namespace ProcessOn
         public int Cputime { get ; }
         public int Round { get; set; }
         public int Priority { get; set; }
+        public int Runningtime { get; set; }
         public string Name { get; }
         internal Process Next { get; set; }
 

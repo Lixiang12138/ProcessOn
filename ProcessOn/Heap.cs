@@ -62,5 +62,15 @@ namespace ProcessOn
         {
             return Elements[v1].CompareTo(Elements[v2]) < 0 ? v2 : v1;
         }
+
+        public T[] Array()
+        {
+            return Elements.Take(Size).ToArray();
+        }
+
+        public bool IsEmpty()
+        {
+            return Size == 0;
+        }
     }
 }

@@ -19,5 +19,15 @@ namespace ProcessOn
         {
             return Peek();
         }
+
+        public T[] Array()
+        {
+            return ToArray();
+        }
+
+        public bool IsEmpty()
+        {
+            return Count == 0;
+        }
     }
 }
