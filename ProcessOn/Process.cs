@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProcessOn
 {
-    class Process : IComparable
+    public class Process : IComparable
     {
         public static readonly int FINISH = 0;
         public static readonly int RUNNING = 1;
@@ -11,7 +11,7 @@ namespace ProcessOn
         public static readonly int BLOCKED = 3;
         public static readonly int WAIT = 4;
 
-        private static readonly String[] stateName = {"Finish","Running","Ready","Blocked","Wait"};
+        private static readonly string[] stateName = {"Finish","Running","Ready","Blocked","Wait"};
 
         public Process(string name = null,int priority = -1,int round = -1,int cputime = -1,int count = -1,int needtime = -1,int createtime = -1,int state = -1)
         {
@@ -38,9 +38,10 @@ namespace ProcessOn
         public string Name { get; }
         internal Process Next { get; set; }
 
-        public int CompareTo(object obj)
+        public int CompareTo(Object obj)
         {
-            return Priority.CompareTo(obj);
+            //return -Priority.CompareTo(((Process)obj).Priority);
+            return Priority - ((Process)obj).Priority;
         }
         
         public string ShowProcess()
@@ -50,6 +51,7 @@ namespace ProcessOn
             str += Priority.ToString().PadRight(8,' ');
             str += Createtime.ToString().PadRight(8, ' ');
             str += (Cputime - Needtime).ToString().PadRight(8, ' ');
+            str += Cputime.ToString().PadRight(8, ' ');
             str += stateName[State].PadRight(8, ' ');
             return str;
         }

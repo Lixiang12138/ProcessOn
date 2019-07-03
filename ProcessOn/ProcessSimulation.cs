@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
+ 
 namespace ProcessOn
 {
-    class ProcessSimulation
+    public class ProcessSimulation
     {
         #region 调用controller
-        public event Action<List<Process>, 
-            List<Process>, List<Process>, List<Process>, List<Process>> OneStepWent;
+        public event Action<ProcessSimulation> OneStepWent;
         #endregion
-        protected List<Process> waitingPool;
-        protected IContainer<Process> readyPool;
-        protected List<Process> runningPool;
-        protected List<Process> finishedPool;
-        protected List<Process> blockedPool;
+        public List<Process> waitingPool;
+        public IContainer<Process> readyPool;
+        public List<Process> runningPool;
+        public List<Process> finishedPool;
+        public List<Process> blockedPool;
+
+        private List<string> blockWaiting = new List<string>();
 
         public int Speed { get; set; }
         public int Time { get; set; }
         protected int Core;
         public bool Pause { get; set; }
+        private bool runFinished;
 
         public ProcessSimulation(int speed = 1,int Core = 1)
         {
@@ -30,6 +33,8 @@ namespace ProcessOn
             blockedPool = new List<Process>();
             Speed = speed;
             Time = 0;
+            Pause = true;
+            runFinished = true;
             this.Core = Core;
         }
 
@@ -47,7 +52,7 @@ namespace ProcessOn
          * 设置时间片用完后的进程状态
          * </summary>
          */
-        protected void OutOfTime(Process p) { }
+        protected virtual void OutOfTime(Process p) { }
 
         /**
          *  阻塞当前进程
@@ -59,11 +64,18 @@ namespace ProcessOn
                 Console.Out.WriteLine(Name + "not found!");
                 return;
             }
-            Process p = runningPool.SingleOrDefault(u => u.Name == Name);
-            p.State = Process.BLOCKED;
-            blockedPool.Add(p);
-            runningPool.Remove(p);
-            Flush();
+            if (!IsStoped())//正在模拟
+            {
+                blockWaiting.Add(Name);
+            }
+            else
+            {
+                Process p = runningPool.SingleOrDefault(u => u.Name == Name);
+                p.State = Process.BLOCKED;
+                blockedPool.Add(p);
+                runningPool.Remove(p);
+                Flush();
+            }
         } 
     
         /**
@@ -84,11 +96,33 @@ namespace ProcessOn
         }
 
         /**
+         * 暂停或继续。一旦状态从暂停变为运行，则检查模拟线程是否存在，不存在则开始模拟。
+         */
+        public void SetPause()
+        {
+            Pause = !Pause;
+            if (Pause == false)
+            {
+                if (runFinished) RunAsync();
+            }
+        }
+
+        public void SetSpeed(int speed)
+        {
+            Speed = speed;
+        }
+
+        /**
          * 
          */
         public void Flush()
         {
-            OneStepWent?.Invoke(waitingPool, readyPool.Array(), runningPool, finishedPool, blockedPool);
+            OneStepWent?.Invoke(this);
+        }
+
+        public bool IsStoped()
+        {
+            return Pause == true && runFinished == true;
         }
 
         /**
@@ -96,6 +130,19 @@ namespace ProcessOn
          */
         public void OneTick()
         {
+            if (blockWaiting.Count > 0)
+            {
+                blockWaiting.ForEach(u =>
+                {
+                    if (runningPool.Exists(x => x.Name == u))
+                    {
+                        Process p = runningPool.Find(x => x.Name == u);
+                        waitingPool.Add(p);
+                    }
+                }
+                );
+                blockWaiting.Clear();
+            }
             if (waitingPool.Count == 0 && runningPool.Count == 0 && blockedPool.Count == 0 && readyPool.IsEmpty())
             {
                 Pause = true;
@@ -106,9 +153,9 @@ namespace ProcessOn
                 {
                     u.State = Process.READY;
                     readyPool.Push(u);
-                    return false;
+                    return true;
                 }
-                else return true;
+                else return false;
             }).ToList();//将等待队列中有效的进程插入就绪序列
             if (runningPool.Count < Core) //从就绪队列中加入进程
             {
@@ -128,7 +175,7 @@ namespace ProcessOn
             }
             if (runningPool.Count > 0)
             {
-                runningPool.ForEach(u => //处理每个运行的进程
+                runningPool = runningPool.FindAll(u => //处理每个运行的进程
                 {
                     u.Needtime--;
                     u.Runningtime++;
@@ -136,22 +183,25 @@ namespace ProcessOn
                     {
                         u.State = Process.FINISH;
                         finishedPool.Add(u);
-                        runningPool.Remove(u);
+                        return false;
                     }
                     else if (u.Round > 0 && u.Runningtime > u.Round)//到达时间片时长
                     {
                         u.State = Process.READY;
                         OutOfTime(u);
                         readyPool.Push(u);
-                        runningPool.Remove(u);
+                        return false;
                     }
+                    return true;
                 });
             }
+            Time++;
             Flush();
         }
 
-        public async void RunAsync()
+        public async Task RunAsync()
         {
+            runFinished = false;
             await Task.Run(() =>
             {
                 int WaitTime = 1000 / Speed;
@@ -161,6 +211,7 @@ namespace ProcessOn
                     Thread.Sleep(WaitTime);
                 }
             });
+            runFinished = true;
         }
     }
 
@@ -171,7 +222,7 @@ namespace ProcessOn
             readyPool = new Heap<Process>();
         }
 
-        new
+        override
         protected void OutOfTime(Process p)
         {
             p.Priority -= 3;
@@ -187,7 +238,7 @@ namespace ProcessOn
             readyPool = new PQueue<Process>();
         }
 
-        new
+        override
         protected void OutOfTime(Process p)
         { }
 

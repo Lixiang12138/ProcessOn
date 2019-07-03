@@ -54,7 +54,7 @@ namespace ProcessOn
             this.UserControl1.Size = new System.Drawing.Size(1259, 976);
             this.UserControl1.TabIndex = 0;
             this.UserControl1.Load += new System.EventHandler(this.UserControl1_Load);
-            UserControl1.StartButtonClicked += ShowProcessPanel;
+            this.UserControl1.StartButtonClicked += ShowProcessPanel;
             // 
             // ProcessPanel
             // 
@@ -63,6 +63,7 @@ namespace ProcessOn
             this.ProcessPanel.Name = "ProcessPanel";
             this.ProcessPanel.Size = new System.Drawing.Size(1259, 976);
             this.ProcessPanel.TabIndex = 1;
+            this.ProcessControl.ReturnButtonClicked += ShowMainPanel;
             // 
             // VirtualProcessController
             // 
@@ -82,6 +83,11 @@ namespace ProcessOn
         {
             this.panel1.Hide();
             this.ProcessPanel.Show();
+        }
+        private void ShowMainPanel()
+        {
+            this.panel1.Show();
+            this.ProcessPanel.Hide();
         }
         #endregion
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
