@@ -95,5 +95,10 @@ namespace ProcessOn
         {
             StartButtonClicked?.Invoke();
         }
+
+        private void ProcessListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
