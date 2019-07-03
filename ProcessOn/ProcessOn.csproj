@@ -57,6 +57,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Heap.cs" />
+    <Compile Include="ProcessControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProcessControl.Designer.cs">
+      <DependentUpon>ProcessControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProcessController.cs" />
     <Compile Include="ProcessSimulation.cs" />
     <Compile Include="Program.cs" />
@@ -69,6 +75,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessControl.resx">
+      <DependentUpon>ProcessControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
