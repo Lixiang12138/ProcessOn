@@ -89,5 +89,10 @@ namespace ProcessOn
             this.miniumPriorityNumeric.Enabled = false;
             this.timeSizeNumeric.Enabled = false;
         }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            StartButtonClicked?.Invoke();
+        }
     }
 }

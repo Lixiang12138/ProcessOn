@@ -1,4 +1,7 @@
-﻿namespace ProcessOn
+﻿using System;
+using System.Windows.Forms;
+
+namespace ProcessOn
 {
     partial class VirtualProcessController
     {
@@ -41,7 +44,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1259, 976);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // UserControl1
             // 
@@ -49,7 +51,7 @@
             this.UserControl1.Name = "UserControl1";
             this.UserControl1.Size = new System.Drawing.Size(1259, 976);
             this.UserControl1.TabIndex = 0;
-            this.UserControl1.Load += new System.EventHandler(this.UserControl1_Load);
+            UserControl1.StartButtonClicked += ShowProcessPanel;
             // 
             // VirtualProcessController
             // 
@@ -60,12 +62,13 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VirtualProcessController";
             this.Text = "Process Controller";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
-
+        private void ShowProcessPanel()
+        {
+        }
         #endregion
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
         private System.Windows.Forms.Panel panel1;

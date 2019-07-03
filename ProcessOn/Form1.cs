@@ -16,20 +16,5 @@ namespace ProcessOn
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
