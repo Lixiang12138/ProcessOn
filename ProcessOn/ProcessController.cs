@@ -3,13 +3,51 @@ using System.Collections.Generic;
 
 namespace ProcessOn
 {
-    class ProcessController
+    public class ProcessController
     {
-        private static ProcessSimulation a;
+        #region 调用form
+        public static event Action<ProcessSimulation> ToForm;
+        #endregion
+
+        public static ProcessSimulation processSimulation;
+
+        public static void CreateProcessSimulation(bool isPriority,List<Process> processes,int speed = 1,int core = 1)
+        {
+            if (isPriority) processSimulation = new PriorityProcessSimulation(speed,core);
+            else processSimulation = new QueueProcessSimulation(speed,core);
+            processSimulation.OneStepWent += Solve;
+            processSimulation.Pause = true;
+            processSimulation.InsertIntoWaitingPool(processes);
+        }
+
+        public static void OneTick()
+        {
+            if (!processSimulation.IsStoped()) return;
+            processSimulation?.OneTick();
+        }
+
+        public static void Pause()
+        {
+            processSimulation?.SetPause();
+        }
+
+        public static void Block(string name)
+        {
+            processSimulation?.BlockProcess(name);
+        }
+
+        public static void Ready(string name)
+        {
+            processSimulation?.ReadyProcess(name);
+        }
+
+        public static void Speed(int speed)
+        {
+            processSimulation?.SetSpeed(speed);
+        }
+
         public static Process CreateProcess(string name, int priority, int round, int cputime, int count, int needtime, int createtime, int state)
         {
-            a = new ProcessSimulation();
-            a.OneStepWent += solve;
             return new Process(name, priority, round, cputime, count, needtime, createtime, state);
         }
 
@@ -33,10 +71,9 @@ namespace ProcessOn
             }
             return list;
         }
-        public static void solve(List<Process> v1,
-            List<Process> v2, List<Process> v3, List<Process> v4, List<Process>v5)
+        public static void Solve(ProcessSimulation ps)
         {
-
+            ToForm?.Invoke(ps);
         }
     }
 }

@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace ProcessOn
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// 应用程序的主入口点。
         /// test
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

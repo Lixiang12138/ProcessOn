@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProcessOn
 {
-    interface IContainer<T> where T : IComparable
+    public interface IContainer<T> where T : IComparable
     {
         T Top();
         void Push(T process);
