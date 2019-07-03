@@ -13,6 +13,7 @@ namespace ProcessOn
     public partial class randomControl : UserControl
     {
         List<Process> ProcessData;
+        public event Action StartButtonClicked;
         public randomControl()
         {
             InitializeComponent();
@@ -88,6 +89,11 @@ namespace ProcessOn
             this.maxiumPriorityNumeric.Enabled = false;
             this.miniumPriorityNumeric.Enabled = false;
             this.timeSizeNumeric.Enabled = false;
+        }
+
+        private void StartButton_Click(object sender, EventArgs e)
+        {
+            StartButtonClicked?.Invoke();
         }
     }
 }

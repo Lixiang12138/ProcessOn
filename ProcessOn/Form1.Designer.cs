@@ -1,4 +1,7 @@
-﻿namespace ProcessOn
+﻿using System;
+using System.Windows.Forms;
+
+namespace ProcessOn
 {
     partial class VirtualProcessController
     {
@@ -31,6 +34,8 @@
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.panel1 = new System.Windows.Forms.Panel();
             this.UserControl1 = new ProcessOn.randomControl();
+            this.ProcessPanel = new System.Windows.Forms.Panel();
+            this.ProcessControl = new ProcessOn.ProcessControl();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +46,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1259, 976);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // UserControl1
             // 
@@ -50,6 +54,15 @@
             this.UserControl1.Size = new System.Drawing.Size(1259, 976);
             this.UserControl1.TabIndex = 0;
             this.UserControl1.Load += new System.EventHandler(this.UserControl1_Load);
+            UserControl1.StartButtonClicked += ShowProcessPanel;
+            // 
+            // ProcessPanel
+            // 
+            this.ProcessPanel.Controls.Add(this.ProcessControl);
+            this.ProcessPanel.Location = new System.Drawing.Point(1, 0);
+            this.ProcessPanel.Name = "ProcessPanel";
+            this.ProcessPanel.Size = new System.Drawing.Size(1259, 976);
+            this.ProcessPanel.TabIndex = 1;
             // 
             // VirtualProcessController
             // 
@@ -57,19 +70,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 977);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ProcessPanel);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VirtualProcessController";
             this.Text = "Process Controller";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
-
+        private void ShowProcessPanel()
+        {
+            this.panel1.Hide();
+            this.ProcessPanel.Show();
+        }
         #endregion
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
         private System.Windows.Forms.Panel panel1;
         private randomControl UserControl1;
+        private Panel ProcessPanel;
+        private ProcessControl ProcessControl;
     }
 }
 
