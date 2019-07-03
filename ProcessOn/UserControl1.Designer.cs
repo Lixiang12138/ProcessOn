@@ -39,6 +39,7 @@
             this.timeSizeLabel = new System.Windows.Forms.Label();
             this.processSettingLabel = new System.Windows.Forms.Label();
             this.maxiumPriorityNumeric = new System.Windows.Forms.NumericUpDown();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.miniumPriorityNumeric = new System.Windows.Forms.NumericUpDown();
             this.dash_3 = new System.Windows.Forms.Label();
             this.randomPriorityLabel = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
             this.dash_1 = new System.Windows.Forms.Label();
             this.ramdomArrivalLabel = new System.Windows.Forms.Label();
             this.randomLabel = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.algorithmLabel = new System.Windows.Forms.Label();
@@ -69,17 +69,17 @@
             // processListView
             // 
             this.processListView.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.processListView.Location = new System.Drawing.Point(633, 233);
+            this.processListView.Location = new System.Drawing.Point(633, 213);
             this.processListView.Margin = new System.Windows.Forms.Padding(4);
             this.processListView.Name = "processListView";
-            this.processListView.Size = new System.Drawing.Size(540, 540);
+            this.processListView.Size = new System.Drawing.Size(563, 540);
             this.processListView.TabIndex = 60;
             this.processListView.UseCompatibleStateImageBehavior = false;
             // 
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.startButton.Location = new System.Drawing.Point(933, 94);
+            this.startButton.Location = new System.Drawing.Point(956, 74);
             this.startButton.Margin = new System.Windows.Forms.Padding(4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(240, 85);
@@ -90,7 +90,7 @@
             // randomButton
             // 
             this.randomButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.randomButton.Location = new System.Drawing.Point(633, 94);
+            this.randomButton.Location = new System.Drawing.Point(633, 74);
             this.randomButton.Margin = new System.Windows.Forms.Padding(4);
             this.randomButton.Name = "randomButton";
             this.randomButton.Size = new System.Drawing.Size(240, 85);
@@ -102,7 +102,7 @@
             // processNumNumeric
             // 
             this.processNumNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.processNumNumeric.Location = new System.Drawing.Point(300, 704);
+            this.processNumNumeric.Location = new System.Drawing.Point(300, 684);
             this.processNumNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.processNumNumeric.Name = "processNumNumeric";
             this.processNumNumeric.Size = new System.Drawing.Size(160, 28);
@@ -116,7 +116,7 @@
             // processNumLabel
             // 
             this.processNumLabel.AutoSize = true;
-            this.processNumLabel.Location = new System.Drawing.Point(296, 672);
+            this.processNumLabel.Location = new System.Drawing.Point(296, 652);
             this.processNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.processNumLabel.Name = "processNumLabel";
             this.processNumLabel.Size = new System.Drawing.Size(67, 15);
@@ -126,7 +126,7 @@
             // rateNumeric
             // 
             this.rateNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rateNumeric.Location = new System.Drawing.Point(68, 791);
+            this.rateNumeric.Location = new System.Drawing.Point(68, 771);
             this.rateNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.rateNumeric.Minimum = new decimal(new int[] {
             1,
@@ -145,7 +145,7 @@
             // rateLabel
             // 
             this.rateLabel.AutoSize = true;
-            this.rateLabel.Location = new System.Drawing.Point(64, 759);
+            this.rateLabel.Location = new System.Drawing.Point(64, 739);
             this.rateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.rateLabel.Name = "rateLabel";
             this.rateLabel.Size = new System.Drawing.Size(97, 15);
@@ -154,8 +154,9 @@
             // 
             // timeSizeNumeric
             // 
+            this.timeSizeNumeric.Enabled = false;
             this.timeSizeNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.timeSizeNumeric.Location = new System.Drawing.Point(69, 704);
+            this.timeSizeNumeric.Location = new System.Drawing.Point(69, 684);
             this.timeSizeNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.timeSizeNumeric.Minimum = new decimal(new int[] {
             1,
@@ -174,7 +175,7 @@
             // timeSizeLabel
             // 
             this.timeSizeLabel.AutoSize = true;
-            this.timeSizeLabel.Location = new System.Drawing.Point(65, 672);
+            this.timeSizeLabel.Location = new System.Drawing.Point(65, 652);
             this.timeSizeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeSizeLabel.Name = "timeSizeLabel";
             this.timeSizeLabel.Size = new System.Drawing.Size(82, 15);
@@ -186,7 +187,7 @@
             this.processSettingLabel.AutoSize = true;
             this.processSettingLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
             this.processSettingLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.processSettingLabel.Location = new System.Drawing.Point(61, 615);
+            this.processSettingLabel.Location = new System.Drawing.Point(61, 595);
             this.processSettingLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.processSettingLabel.Name = "processSettingLabel";
             this.processSettingLabel.Size = new System.Drawing.Size(158, 31);
@@ -195,8 +196,9 @@
             // 
             // maxiumPriorityNumeric
             // 
+            this.maxiumPriorityNumeric.Enabled = this.radioButton3.Checked;
             this.maxiumPriorityNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.maxiumPriorityNumeric.Location = new System.Drawing.Point(300, 545);
+            this.maxiumPriorityNumeric.Location = new System.Drawing.Point(300, 525);
             this.maxiumPriorityNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.maxiumPriorityNumeric.Name = "maxiumPriorityNumeric";
             this.maxiumPriorityNumeric.Size = new System.Drawing.Size(160, 28);
@@ -207,10 +209,25 @@
             0,
             0});
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.radioButton3.Location = new System.Drawing.Point(69, 144);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(248, 31);
+            this.radioButton3.TabIndex = 37;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "先来先服务+时间片轮转";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.RadioButton3_CheckedChanged);
+            // 
             // miniumPriorityNumeric
             // 
+            this.miniumPriorityNumeric.Enabled = this.radioButton3.Checked;
             this.miniumPriorityNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.miniumPriorityNumeric.Location = new System.Drawing.Point(69, 545);
+            this.miniumPriorityNumeric.Location = new System.Drawing.Point(69, 525);
             this.miniumPriorityNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.miniumPriorityNumeric.Name = "miniumPriorityNumeric";
             this.miniumPriorityNumeric.Size = new System.Drawing.Size(160, 28);
@@ -219,7 +236,7 @@
             // dash_3
             // 
             this.dash_3.AutoSize = true;
-            this.dash_3.Location = new System.Drawing.Point(252, 551);
+            this.dash_3.Location = new System.Drawing.Point(252, 531);
             this.dash_3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dash_3.Name = "dash_3";
             this.dash_3.Size = new System.Drawing.Size(15, 15);
@@ -229,7 +246,7 @@
             // randomPriorityLabel
             // 
             this.randomPriorityLabel.AutoSize = true;
-            this.randomPriorityLabel.Location = new System.Drawing.Point(65, 509);
+            this.randomPriorityLabel.Location = new System.Drawing.Point(65, 489);
             this.randomPriorityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.randomPriorityLabel.Name = "randomPriorityLabel";
             this.randomPriorityLabel.Size = new System.Drawing.Size(52, 15);
@@ -239,7 +256,7 @@
             // maxiumrunNumeric
             // 
             this.maxiumrunNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.maxiumrunNumeric.Location = new System.Drawing.Point(300, 453);
+            this.maxiumrunNumeric.Location = new System.Drawing.Point(300, 433);
             this.maxiumrunNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.maxiumrunNumeric.Name = "maxiumrunNumeric";
             this.maxiumrunNumeric.Size = new System.Drawing.Size(160, 28);
@@ -253,7 +270,7 @@
             // miniumRunNumeric
             // 
             this.miniumRunNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.miniumRunNumeric.Location = new System.Drawing.Point(69, 453);
+            this.miniumRunNumeric.Location = new System.Drawing.Point(69, 433);
             this.miniumRunNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.miniumRunNumeric.Name = "miniumRunNumeric";
             this.miniumRunNumeric.Size = new System.Drawing.Size(160, 28);
@@ -262,7 +279,7 @@
             // dash_2
             // 
             this.dash_2.AutoSize = true;
-            this.dash_2.Location = new System.Drawing.Point(252, 458);
+            this.dash_2.Location = new System.Drawing.Point(252, 438);
             this.dash_2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dash_2.Name = "dash_2";
             this.dash_2.Size = new System.Drawing.Size(15, 15);
@@ -272,7 +289,7 @@
             // ramdomRunLabel
             // 
             this.ramdomRunLabel.AutoSize = true;
-            this.ramdomRunLabel.Location = new System.Drawing.Point(65, 417);
+            this.ramdomRunLabel.Location = new System.Drawing.Point(65, 397);
             this.ramdomRunLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ramdomRunLabel.Name = "ramdomRunLabel";
             this.ramdomRunLabel.Size = new System.Drawing.Size(112, 15);
@@ -282,7 +299,7 @@
             // maxiumArrivalNumeric
             // 
             this.maxiumArrivalNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.maxiumArrivalNumeric.Location = new System.Drawing.Point(300, 359);
+            this.maxiumArrivalNumeric.Location = new System.Drawing.Point(300, 339);
             this.maxiumArrivalNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.maxiumArrivalNumeric.Name = "maxiumArrivalNumeric";
             this.maxiumArrivalNumeric.Size = new System.Drawing.Size(160, 28);
@@ -296,7 +313,7 @@
             // miniumArrivalNumeric
             // 
             this.miniumArrivalNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.miniumArrivalNumeric.Location = new System.Drawing.Point(69, 359);
+            this.miniumArrivalNumeric.Location = new System.Drawing.Point(69, 339);
             this.miniumArrivalNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.miniumArrivalNumeric.Name = "miniumArrivalNumeric";
             this.miniumArrivalNumeric.Size = new System.Drawing.Size(160, 28);
@@ -305,7 +322,7 @@
             // dash_1
             // 
             this.dash_1.AutoSize = true;
-            this.dash_1.Location = new System.Drawing.Point(252, 364);
+            this.dash_1.Location = new System.Drawing.Point(252, 344);
             this.dash_1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dash_1.Name = "dash_1";
             this.dash_1.Size = new System.Drawing.Size(15, 15);
@@ -315,7 +332,7 @@
             // ramdomArrivalLabel
             // 
             this.ramdomArrivalLabel.AutoSize = true;
-            this.ramdomArrivalLabel.Location = new System.Drawing.Point(65, 323);
+            this.ramdomArrivalLabel.Location = new System.Drawing.Point(65, 303);
             this.ramdomArrivalLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ramdomArrivalLabel.Name = "ramdomArrivalLabel";
             this.ramdomArrivalLabel.Size = new System.Drawing.Size(67, 15);
@@ -327,31 +344,18 @@
             this.randomLabel.AutoSize = true;
             this.randomLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
             this.randomLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.randomLabel.Location = new System.Drawing.Point(61, 265);
+            this.randomLabel.Location = new System.Drawing.Point(61, 245);
             this.randomLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.randomLabel.Name = "randomLabel";
             this.randomLabel.Size = new System.Drawing.Size(254, 31);
             this.randomLabel.TabIndex = 38;
             this.randomLabel.Text = "设置随机进程参数范围";
             // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton3.Location = new System.Drawing.Point(69, 164);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(248, 31);
-            this.radioButton3.TabIndex = 37;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "先来先服务+时间片轮转";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton2.Location = new System.Drawing.Point(69, 211);
+            this.radioButton2.Location = new System.Drawing.Point(69, 191);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(328, 31);
@@ -359,13 +363,14 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "最高优先度优先调度+时间片轮转";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.RadioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.radioButton1.Location = new System.Drawing.Point(69, 118);
+            this.radioButton1.Location = new System.Drawing.Point(69, 98);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(133, 31);
@@ -373,13 +378,14 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "先来先服务";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.RadioButton1_CheckedChanged);
             // 
             // algorithmLabel
             // 
             this.algorithmLabel.AutoSize = true;
             this.algorithmLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
             this.algorithmLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.algorithmLabel.Location = new System.Drawing.Point(61, 59);
+            this.algorithmLabel.Location = new System.Drawing.Point(61, 39);
             this.algorithmLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.algorithmLabel.Name = "algorithmLabel";
             this.algorithmLabel.Size = new System.Drawing.Size(230, 31);
