@@ -10,18 +10,19 @@ namespace ProcessOn
     {
         const int root = 1;
         private int Size { get; set; }
-        private T[] Elements { get; }
+        public T[] Elements { get; }
         public Heap()
         {
+            Elements = new T[101];
             Size = 0;
         }
         public void Push(T element)
         {
             Elements[++Size] = element;
             int t = Size;
-            while(t > root)
+            while((t >> 1) >= root)
             {
-                if (Elements[t].CompareTo(Elements[t >> 1]) < 0)
+                if (Elements[t].CompareTo(Elements[t >> 1]) > 0)
                 {
                     T tmp = Elements[t];
                     Elements[t] = Elements[t >> 1];
@@ -65,7 +66,8 @@ namespace ProcessOn
 
         public List<T> Array()
         {
-            return new List<T>(Elements.Take(Size).ToArray());
+            if (Elements == null) return new List<T>();
+            return new List<T>(Elements.Skip(1).Take(Size));
         }
 
         public bool IsEmpty()
