@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 namespace ProcessOn
 {
-    internal class ProcessSimulation
+    class ProcessSimulation
     {
         #region 调用controller
-        public event Action<List<Process>,
+        public event Action<List<Process>, 
             List<Process>, List<Process>, List<Process>, List<Process>> OneStepWent;
         #endregion
         protected List<Process> waitingPool;
@@ -22,7 +22,7 @@ namespace ProcessOn
         protected int Core;
         public bool Pause { get; set; }
 
-        public ProcessSimulation(int speed = 1, int Core = 1)
+        public ProcessSimulation(int speed = 1,int Core = 1)
         {
             waitingPool = new List<Process>();
             runningPool = new List<Process>();
@@ -38,7 +38,7 @@ namespace ProcessOn
          */
         public void InsertIntoWaitingPool(List<Process> list)
         {
-            list.Sort((u, v) => u.Createtime - v.Createtime);
+            list.Sort((u,v) => u.Createtime - v.Createtime);
             list.ForEach(u => waitingPool.Add(u));
         }
 
@@ -62,12 +62,12 @@ namespace ProcessOn
             blockedPool.Add(p);
             runningPool.Remove(p);
             Flush();
-        }
-
+        } 
+    
         /**
          * 恢复阻塞的进程
          */
-        public void ReadyProcess(string Name)
+         public void ReadyProcess(string Name)
         {
             if (!blockedPool.Exists(u => u.Name == Name))
             {
@@ -99,8 +99,7 @@ namespace ProcessOn
                 Pause = true;
                 return;
             }
-            waitingPool = waitingPool.SkipWhile(u =>
-            {
+            waitingPool = waitingPool.SkipWhile(u => {
                 if (u.Createtime <= Time)
                 {
                     u.State = Process.READY;
@@ -111,7 +110,7 @@ namespace ProcessOn
             }).ToList();//将等待队列中有效的进程插入就绪序列
             if (runningPool.Count < Core) //从就绪队列中加入进程
             {
-                for (int i = runningPool.Count; i < Core; i++)
+                for(int i = runningPool.Count;i < Core; i++)
                 {
                     if (!readyPool.IsEmpty())
                     {
@@ -163,7 +162,7 @@ namespace ProcessOn
         }
     }
 
-    internal class PriorityProcessSimulation : ProcessSimulation
+    class PriorityProcessSimulation : ProcessSimulation
     {
         public PriorityProcessSimulation(int speed = 1, int Core = 1) : base(speed, Core)
         {
@@ -179,7 +178,7 @@ namespace ProcessOn
 
     }
 
-    internal class QueueProcessSimulation : ProcessSimulation
+    class QueueProcessSimulation : ProcessSimulation
     {
         public QueueProcessSimulation(int speed = 1, int Core = 1) : base(speed, Core)
         {

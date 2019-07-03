@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ProcessOn
 {
-    public class Heap<T> : IContainer<T> where T : IComparable
+    public class Heap<T>:IContainer<T> where T:IComparable
     {
-        private const int root = 1;
+        const int root = 1;
         private int Size { get; set; }
         private T[] Elements { get; }
         public Heap()
@@ -17,7 +19,7 @@ namespace ProcessOn
         {
             Elements[++Size] = element;
             int t = Size;
-            while (t > root)
+            while(t > root)
             {
                 if (Elements[t].CompareTo(Elements[t >> 1]) < 0)
                 {
@@ -40,7 +42,7 @@ namespace ProcessOn
             Elements[root] = Elements[Size];
             Elements.SetValue(null, Size--);
             int t = root;
-            while ((t << 1) <= Size)
+            while((t << 1) <= Size)
             {
                 int x = (t << 1 | 1) > Size ? t << 1 : Max(t << 1 | 1, t << 1);
                 if (Elements[t].CompareTo(Elements[x]) < 0)

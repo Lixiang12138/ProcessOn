@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProcessOn
 {
-    internal class PQueue<T> : Queue<T>, IContainer<T> where T : IComparable
+    class PQueue<T> : Queue<T>, IContainer<T> where T : IComparable
     {
         public T Pop()
         {

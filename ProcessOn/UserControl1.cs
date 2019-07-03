@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProcessOn
 {
     public partial class randomControl : UserControl
     {
-        private List<Process> ProcessData;
+        List<Process> ProcessData;
         public randomControl()
         {
             InitializeComponent();
@@ -49,7 +54,7 @@ namespace ProcessOn
 
             //Add the items to the ListView.
             processListView.Items.Clear();
-            for (int i = 0; i < ProcessData.Count(); i++)
+            for(int i=0;i<ProcessData.Count();i++)
             {
                 ListViewItem tmp = new ListViewItem(ProcessData[i].Name, 0);
                 tmp.SubItems.Add(ProcessData[i].Createtime.ToString());
