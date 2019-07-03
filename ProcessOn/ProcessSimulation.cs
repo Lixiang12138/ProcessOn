@@ -43,7 +43,9 @@ namespace ProcessOn
         }
 
         /**
+         * <summary>
          * 设置时间片用完后的进程状态
+         * </summary>
          */
         protected void OutOfTime(Process p) { }
 
