@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProcessOn
 {
-    public partial class Form1 : Form
+    public partial class VirtualProcessController : Form
     {
-        public Form1()
+        public VirtualProcessController()
         {
             InitializeComponent();
         }
@@ -22,5 +22,14 @@ namespace ProcessOn
 
         }
 
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void UserControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
