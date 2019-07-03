@@ -13,6 +13,8 @@ namespace ProcessOn
     public partial class randomControl : UserControl
     {
         List<Process> ProcessData;
+
+        public event Action StartButtonClicked;
         public randomControl()
         {
             InitializeComponent();
