@@ -13,9 +13,8 @@ namespace ProcessOn
             return new Process(name, priority, round, cputime, count, needtime, createtime, state);
         }
 
-        public static Process CreateRandomProcess(string name, int round, int min_createtime, int max_createtime, int min_cputime, int max_cputime, int min_priority = -1, int max_priority = -1)
+        public static Process CreateRandomProcess(Random random ,string name, int round, int min_createtime, int max_createtime, int min_cputime, int max_cputime, int min_priority = -1, int max_priority = -1)
         {
-            Random random = new Random((int)DateTime.Now.Ticks);
             int createtime = random.Next(min_createtime, max_createtime);
             int cputime = random.Next(min_cputime, max_cputime);
             int priority = random.Next(min_priority, max_priority);
@@ -24,11 +23,12 @@ namespace ProcessOn
 
         public static List<Process> CreateRandomProcesses(int size, int round, int min_createtime, int max_createtime, int min_cputime, int max_cputime, int min_priority = -1, int max_priority = -1)
         {
+            Random random = new Random((int)DateTime.Now.Ticks);
             List<Process> list = new List<Process>();
             for (int i = 1; i <= size; i++)
             {
                 String name = "P" + i;
-                Process p = CreateRandomProcess(name, round, min_createtime, max_createtime, min_cputime, max_cputime, min_priority, max_priority);
+                Process p = CreateRandomProcess(random,name, round, min_createtime, max_createtime, min_cputime, max_cputime, min_priority, max_priority);
                 list.Add(p);
             }
             return list;
