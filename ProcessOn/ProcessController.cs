@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProcessOn
 {
-    class ProcessController
+    internal class ProcessController
     {
         private static ProcessSimulation a;
         public static Process CreateProcess(string name, int priority, int round, int cputime, int count, int needtime, int createtime, int state)
@@ -13,7 +13,7 @@ namespace ProcessOn
             return new Process(name, priority, round, cputime, count, needtime, createtime, state);
         }
 
-        public static Process CreateRandomProcess(Random random ,string name, int round, int min_createtime, int max_createtime, int min_cputime, int max_cputime, int min_priority = -1, int max_priority = -1)
+        public static Process CreateRandomProcess(Random random, string name, int round, int min_createtime, int max_createtime, int min_cputime, int max_cputime, int min_priority = -1, int max_priority = -1)
         {
             int createtime = random.Next(min_createtime, max_createtime);
             int cputime = random.Next(min_cputime, max_cputime);
@@ -28,13 +28,13 @@ namespace ProcessOn
             for (int i = 1; i <= size; i++)
             {
                 String name = "P" + i;
-                Process p = CreateRandomProcess(random,name, round, min_createtime, max_createtime, min_cputime, max_cputime, min_priority, max_priority);
+                Process p = CreateRandomProcess(random, name, round, min_createtime, max_createtime, min_cputime, max_cputime, min_priority, max_priority);
                 list.Add(p);
             }
             return list;
         }
         public static void solve(List<Process> v1,
-            List<Process> v2, List<Process> v3, List<Process> v4, List<Process>v5)
+            List<Process> v2, List<Process> v3, List<Process> v4, List<Process> v5)
         {
 
         }
