@@ -7,6 +7,10 @@ namespace ProcessOn
 {
     class ProcessSimulation
     {
+        #region 调用controller
+        public event Action<List<Process>, 
+            IContainer<Process>, List<Process>, List<Process>, List<Process>> OneStepWent;
+        #endregion
         protected List<Process> waitingPool;
         protected IContainer<Process> readyPool;
         protected List<Process> runningPool;
@@ -87,6 +91,7 @@ namespace ProcessOn
                     }
                 });
             }
+            OneStepWent?.Invoke(waitingPool, readyPool, runningPool, finishedPool, blockedPool);
         }
 
         public async void RunAsync()
