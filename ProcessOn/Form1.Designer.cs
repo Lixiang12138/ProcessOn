@@ -83,6 +83,8 @@ namespace ProcessOn
         {
             this.panel1.Hide();
             this.ProcessPanel.Show();
+            this.ProcessControl.runningType = this.UserControl1.runningType;
+            this.ProcessControl.ProcessPool = this.UserControl1.ProcessData;
         }
         private void ShowMainPanel()
         {

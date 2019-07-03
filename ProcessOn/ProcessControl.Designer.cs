@@ -178,7 +178,7 @@
             // blockButton
             // 
             this.blockButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.blockButton.Location = new System.Drawing.Point(1040, 370);
+            this.blockButton.Location = new System.Drawing.Point(1040, 377);
             this.blockButton.Name = "blockButton";
             this.blockButton.Size = new System.Drawing.Size(160, 50);
             this.blockButton.TabIndex = 58;

@@ -12,7 +12,8 @@ namespace ProcessOn
 {
     public partial class randomControl : UserControl
     {
-        List<Process> ProcessData;
+        public List<Process> ProcessData;
+        public int runningType;
         public event Action StartButtonClicked;
         public randomControl()
         {
@@ -75,6 +76,7 @@ namespace ProcessOn
             this.maxiumPriorityNumeric.Enabled = true;
             this.miniumPriorityNumeric.Enabled = true;
             this.timeSizeNumeric.Enabled = true;
+            this.runningType = 3;
         }
 
         private void RadioButton3_CheckedChanged(object sender, EventArgs e)
@@ -82,6 +84,7 @@ namespace ProcessOn
             this.maxiumPriorityNumeric.Enabled = false;
             this.miniumPriorityNumeric.Enabled = false;
             this.timeSizeNumeric.Enabled = true;
+            this.runningType = 2;
         }
 
         private void RadioButton1_CheckedChanged(object sender, EventArgs e)
@@ -89,6 +92,7 @@ namespace ProcessOn
             this.maxiumPriorityNumeric.Enabled = false;
             this.miniumPriorityNumeric.Enabled = false;
             this.timeSizeNumeric.Enabled = false;
+            this.runningType = 1;
         }
 
         private void StartButton_Click(object sender, EventArgs e)
