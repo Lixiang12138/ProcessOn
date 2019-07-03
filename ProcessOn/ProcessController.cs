@@ -19,7 +19,7 @@ namespace ProcessOn
             int createtime = random.Next(min_createtime, max_createtime);
             int cputime = random.Next(min_cputime, max_cputime);
             int priority = random.Next(min_priority, max_priority);
-            return CreateProcess(name, priority, round, cputime, 0, cputime, createtime, 2);
+            return CreateProcess(name, priority, round, cputime, 0, cputime, createtime, Process.WAIT);
         }
 
         public static List<Process> CreateRandomProcesses(int size, int round, int min_createtime, int max_createtime, int min_cputime, int max_cputime, int min_priority = -1, int max_priority = -1)
@@ -34,7 +34,7 @@ namespace ProcessOn
             return list;
         }
         public static void solve(List<Process> v1,
-            IContainer<Process> v2, List<Process> v3, List<Process> v4, List<Process>v5)
+            List<Process> v2, List<Process> v3, List<Process> v4, List<Process>v5)
         {
 
         }

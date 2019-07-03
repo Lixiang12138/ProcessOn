@@ -20,9 +20,9 @@ namespace ProcessOn
             return Peek();
         }
 
-        public T[] Array()
+        public List<T> Array()
         {
-            return ToArray();
+            return new List<T>(ToArray());
         }
 
         public bool IsEmpty()

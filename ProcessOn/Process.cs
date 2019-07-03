@@ -5,8 +5,13 @@ namespace ProcessOn
 {
     class Process : IComparable
     {
+        public static readonly int FINISH = 0;
+        public static readonly int RUNNING = 1;
+        public static readonly int READY = 2;
+        public static readonly int BLOCKED = 3;
+        public static readonly int WAIT = 4;
 
-        private static readonly String[] stateName = {"Finish","Running","Wait","Blocked"};
+        private static readonly String[] stateName = {"Finish","Running","Ready","Blocked","Wait"};
 
         public Process(string name = null,int priority = -1,int round = -1,int cputime = -1,int count = -1,int needtime = -1,int createtime = -1,int state = -1)
         {
@@ -22,7 +27,7 @@ namespace ProcessOn
             this.Next = null;
         }
 
-        public int State { get; set; }//-1:FLAG 0:FINISH 1:RUNNING 2:WAIT 3:BLOCKED
+        public int State { get; set; }//-1:FLAG 0:FINISH 1:RUNNING 2.READY 3:BLOCKED 4.WAIT
         public int Createtime { get ; }
         public int Needtime { get ; set ; }
         public int Count { get ; set ; }

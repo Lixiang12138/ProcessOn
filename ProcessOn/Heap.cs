@@ -63,9 +63,9 @@ namespace ProcessOn
             return Elements[v1].CompareTo(Elements[v2]) < 0 ? v2 : v1;
         }
 
-        public T[] Array()
+        public List<T> Array()
         {
-            return Elements.Take(Size).ToArray();
+            return new List<T>(Elements.Take(Size).ToArray());
         }
 
         public bool IsEmpty()

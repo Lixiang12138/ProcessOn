@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.Linq;
 namespace ProcessOn
 {
     class ProcessSimulation
     {
         #region 调用controller
         public event Action<List<Process>, 
-            IContainer<Process>, List<Process>, List<Process>, List<Process>> OneStepWent;
+            List<Process>, List<Process>, List<Process>, List<Process>> OneStepWent;
         #endregion
         protected List<Process> waitingPool;
         protected IContainer<Process> readyPool;
@@ -38,6 +38,7 @@ namespace ProcessOn
          */
         public void InsertIntoWaitingPool(List<Process> list)
         {
+            list.Sort((u,v) => u.Createtime - v.Createtime);
             list.ForEach(u => waitingPool.Add(u));
         }
 
@@ -45,6 +46,48 @@ namespace ProcessOn
          * 设置时间片用完后的进程状态
          */
         protected void OutOfTime(Process p) { }
+
+        /**
+         *  阻塞当前进程
+         */
+        public void BlockProcess(string Name)
+        {
+            if (!runningPool.Exists(u => u.Name == Name))
+            {
+                Console.Out.WriteLine(Name + "not found!");
+                return;
+            }
+            Process p = runningPool.SingleOrDefault(u => u.Name == Name);
+            p.State = Process.BLOCKED;
+            blockedPool.Add(p);
+            runningPool.Remove(p);
+            Flush();
+        } 
+    
+        /**
+         * 恢复阻塞的进程
+         */
+         public void ReadyProcess(string Name)
+        {
+            if (!blockedPool.Exists(u => u.Name == Name))
+            {
+                Console.Out.WriteLine(Name + "not found!");
+                return;
+            }
+            Process p = blockedPool.SingleOrDefault(u => u.Name == Name);
+            p.State = Process.READY;
+            readyPool.Push(p);
+            blockedPool.Add(p);
+            Flush();
+        }
+
+        /**
+         * 
+         */
+        public void Flush()
+        {
+            OneStepWent?.Invoke(waitingPool, readyPool.Array(), runningPool, finishedPool, blockedPool);
+        }
 
         /**
          * 步长为1 tick的模拟.
@@ -55,8 +98,16 @@ namespace ProcessOn
             {
                 Pause = true;
                 return;
-            } 
-            waitingPool.ForEach(u => { if (u.Createtime <= Time) readyPool.Push(u);}); //将等待队列中有效的进程插入就绪序列
+            }
+            waitingPool = waitingPool.SkipWhile(u => {
+                if (u.Createtime <= Time)
+                {
+                    u.State = Process.READY;
+                    readyPool.Push(u);
+                    return false;
+                }
+                else return true;
+            }).ToList();//将等待队列中有效的进程插入就绪序列
             if (runningPool.Count < Core) //从就绪队列中加入进程
             {
                 for(int i = runningPool.Count;i < Core; i++)
@@ -64,6 +115,8 @@ namespace ProcessOn
                     if (!readyPool.IsEmpty())
                     {
                         Process p = readyPool.Top();
+                        p.State = Process.RUNNING;
+                        p.Runningtime = 0;
                         p.Count++;
                         runningPool.Add(p);
                         readyPool.Pop();
@@ -79,19 +132,20 @@ namespace ProcessOn
                     u.Runningtime++;
                     if (u.Needtime == 0)//已完成
                     {
+                        u.State = Process.FINISH;
                         finishedPool.Add(u);
                         runningPool.Remove(u);
                     }
                     else if (u.Round > 0 && u.Runningtime > u.Round)//到达时间片时长
                     {
-                        u.Runningtime = 0;
+                        u.State = Process.READY;
                         OutOfTime(u);
                         readyPool.Push(u);
                         runningPool.Remove(u);
                     }
                 });
             }
-            OneStepWent?.Invoke(waitingPool, readyPool, runningPool, finishedPool, blockedPool);
+            Flush();
         }
 
         public async void RunAsync()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ProcessOn
 {
@@ -7,7 +8,7 @@ namespace ProcessOn
         T Top();
         void Push(T process);
         T Pop();
-        T[] Array();
+        List<T> Array();
         bool IsEmpty();
     }
 }
