@@ -18,6 +18,10 @@ namespace ProcessOn
         public List<Process> blockedPool;
 
         private List<string> blockWaiting = new List<string>();
+        
+        private List<Process> finishedWaiting = new List<Process>();
+        
+        private List<Process> outOfTimeWaiting = new List<Process>();
 
         public int Speed { get; set; }
         public int Time { get; set; }
@@ -128,6 +132,25 @@ namespace ProcessOn
          */
         public void OneTick()
         {
+            //处理完成等待队列
+            if (finishedWaiting.Count > 0){
+                finishedWaiting.ForEach(u => {
+                    if (runningPool.Exists(x => x.Name == u.Name)){
+                        runningPool.RemoveAll(x => x.Name == u.Name);
+                        finishedPool.Add(u);
+                    }
+                });
+            }
+            //处理超时等待队列
+            if (outOfTimeWaiting.Count > 0){
+                outOfTimeWaiting.ForEach(u => {
+                    if (runningPool.Exists(x => x.Name == u.Name)){
+                        runningPool.RemoveAll(x => x.Name == u.Name);
+                        outOfTimeWaiting.Add(u);
+                    }
+                });
+            }
+            //处理阻塞等待队列
             if (blockWaiting.Count > 0)
             {
                 blockWaiting.ForEach(u =>
@@ -141,11 +164,13 @@ namespace ProcessOn
                 );
                 blockWaiting.Clear();
             }
+            //判断是否停机
             if (waitingPool.Count == 0 && runningPool.Count == 0 && blockedPool.Count == 0 && readyPool.IsEmpty())
             {
                 Pause = true;
                 return;
             }
+            //等待队列加入就绪队列
             waitingPool = waitingPool.SkipWhile(u => {
                 if (u.Createtime <= Time)
                 {
@@ -154,8 +179,9 @@ namespace ProcessOn
                     return true;
                 }
                 else return false;
-            }).ToList();//将等待队列中有效的进程插入就绪序列
-            if (runningPool.Count < Core) //从就绪队列中加入进程
+            }).ToList();
+            //就绪队列加入运行队列
+            if (runningPool.Count < Core)
             {
                 for(int i = runningPool.Count;i < Core; i++)
                 {
@@ -171,26 +197,25 @@ namespace ProcessOn
                     else break;
                 }
             }
+            //处理运行队列
             if (runningPool.Count > 0)
             {
-                runningPool = runningPool.FindAll(u => //处理每个运行的进程
+                //处理每个运行的进程
+                runningPool = runningPool.ForEach(u =>
                 {
                     u.Needtime--;
                     u.Runningtime++;
                     if (u.Needtime == 0)//已完成
                     {
                         u.State = Process.FINISH;
-                        finishedPool.Add(u);
-                        return false;
+                        finishedWaiting.Add(u);
                     }
-                    else if (u.Round > 0 && u.Runningtime > u.Round)//到达时间片时长
+                    else if (u.Round > 0 && u.Runningtime >= u.Round)//到达时间片时长
                     {
                         u.State = Process.READY;
                         OutOfTime(u);
-                        readyPool.Push(u);
-                        return false;
+                        outOfTimeWaiting.Push(u);
                     }
-                    return true;
                 });
             }
             Time++;
