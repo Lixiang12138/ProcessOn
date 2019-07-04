@@ -54,8 +54,8 @@ namespace ProcessOn
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.algorithmLabel = new System.Windows.Forms.Label();
-            this.rateLabel = new System.Windows.Forms.Label();
-            this.rateNumeric = new System.Windows.Forms.NumericUpDown();
+            this.coreNumeric = new System.Windows.Forms.NumericUpDown();
+            this.coreLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.processNumNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeSizeNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxiumPriorityNumeric)).BeginInit();
@@ -64,7 +64,7 @@ namespace ProcessOn
             ((System.ComponentModel.ISupportInitialize)(this.miniumRunNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxiumArrivalNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.miniumArrivalNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rateNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coreNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // processListView
@@ -72,7 +72,7 @@ namespace ProcessOn
             this.processListView.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.processListView.HideSelection = false;
             this.processListView.Location = new System.Drawing.Point(633, 212);
-            this.processListView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.processListView.Margin = new System.Windows.Forms.Padding(4);
             this.processListView.Name = "processListView";
             this.processListView.Size = new System.Drawing.Size(563, 540);
             this.processListView.TabIndex = 60;
@@ -83,7 +83,7 @@ namespace ProcessOn
             // 
             this.startButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.startButton.Location = new System.Drawing.Point(956, 74);
-            this.startButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startButton.Margin = new System.Windows.Forms.Padding(4);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(240, 85);
             this.startButton.TabIndex = 59;
@@ -95,7 +95,7 @@ namespace ProcessOn
             // 
             this.randomButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.randomButton.Location = new System.Drawing.Point(633, 74);
-            this.randomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.randomButton.Margin = new System.Windows.Forms.Padding(4);
             this.randomButton.Name = "randomButton";
             this.randomButton.Size = new System.Drawing.Size(240, 85);
             this.randomButton.TabIndex = 58;
@@ -107,7 +107,7 @@ namespace ProcessOn
             // 
             this.processNumNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.processNumNumeric.Location = new System.Drawing.Point(300, 684);
-            this.processNumNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.processNumNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.processNumNumeric.Name = "processNumNumeric";
             this.processNumNumeric.Size = new System.Drawing.Size(160, 28);
             this.processNumNumeric.TabIndex = 57;
@@ -132,7 +132,7 @@ namespace ProcessOn
             this.timeSizeNumeric.Enabled = false;
             this.timeSizeNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.timeSizeNumeric.Location = new System.Drawing.Point(69, 684);
-            this.timeSizeNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.timeSizeNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.timeSizeNumeric.Minimum = new decimal(new int[] {
             1,
             0,
@@ -174,7 +174,7 @@ namespace ProcessOn
             this.maxiumPriorityNumeric.Enabled = this.radioButton3.Checked;
             this.maxiumPriorityNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.maxiumPriorityNumeric.Location = new System.Drawing.Point(300, 525);
-            this.maxiumPriorityNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maxiumPriorityNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.maxiumPriorityNumeric.Name = "maxiumPriorityNumeric";
             this.maxiumPriorityNumeric.Size = new System.Drawing.Size(160, 28);
             this.maxiumPriorityNumeric.TabIndex = 50;
@@ -189,7 +189,7 @@ namespace ProcessOn
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton3.Location = new System.Drawing.Point(69, 144);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(248, 31);
             this.radioButton3.TabIndex = 37;
@@ -203,7 +203,7 @@ namespace ProcessOn
             this.miniumPriorityNumeric.Enabled = this.radioButton3.Checked;
             this.miniumPriorityNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.miniumPriorityNumeric.Location = new System.Drawing.Point(69, 525);
-            this.miniumPriorityNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.miniumPriorityNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.miniumPriorityNumeric.Name = "miniumPriorityNumeric";
             this.miniumPriorityNumeric.Size = new System.Drawing.Size(160, 28);
             this.miniumPriorityNumeric.TabIndex = 49;
@@ -232,12 +232,12 @@ namespace ProcessOn
             // 
             this.maxiumrunNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.maxiumrunNumeric.Location = new System.Drawing.Point(300, 432);
-            this.maxiumrunNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maxiumrunNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.maxiumrunNumeric.Name = "maxiumrunNumeric";
             this.maxiumrunNumeric.Size = new System.Drawing.Size(160, 28);
             this.maxiumrunNumeric.TabIndex = 46;
             this.maxiumrunNumeric.Value = new decimal(new int[] {
-            100,
+            10,
             0,
             0,
             0});
@@ -246,10 +246,15 @@ namespace ProcessOn
             // 
             this.miniumRunNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.miniumRunNumeric.Location = new System.Drawing.Point(69, 432);
-            this.miniumRunNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.miniumRunNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.miniumRunNumeric.Name = "miniumRunNumeric";
             this.miniumRunNumeric.Size = new System.Drawing.Size(160, 28);
             this.miniumRunNumeric.TabIndex = 45;
+            this.miniumRunNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // dash_2
             // 
@@ -275,7 +280,7 @@ namespace ProcessOn
             // 
             this.maxiumArrivalNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.maxiumArrivalNumeric.Location = new System.Drawing.Point(300, 339);
-            this.maxiumArrivalNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.maxiumArrivalNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.maxiumArrivalNumeric.Name = "maxiumArrivalNumeric";
             this.maxiumArrivalNumeric.Size = new System.Drawing.Size(160, 28);
             this.maxiumArrivalNumeric.TabIndex = 42;
@@ -289,7 +294,7 @@ namespace ProcessOn
             // 
             this.miniumArrivalNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.miniumArrivalNumeric.Location = new System.Drawing.Point(69, 339);
-            this.miniumArrivalNumeric.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.miniumArrivalNumeric.Margin = new System.Windows.Forms.Padding(4);
             this.miniumArrivalNumeric.Name = "miniumArrivalNumeric";
             this.miniumArrivalNumeric.Size = new System.Drawing.Size(160, 28);
             this.miniumArrivalNumeric.TabIndex = 41;
@@ -331,7 +336,7 @@ namespace ProcessOn
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton2.Location = new System.Drawing.Point(69, 191);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(328, 31);
             this.radioButton2.TabIndex = 36;
@@ -346,7 +351,7 @@ namespace ProcessOn
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton1.Location = new System.Drawing.Point(69, 98);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(133, 31);
             this.radioButton1.TabIndex = 35;
@@ -367,46 +372,52 @@ namespace ProcessOn
             this.algorithmLabel.TabIndex = 34;
             this.algorithmLabel.Text = "选择使用的调度算法";
             // 
-            // rateLabel
+            // coreNumeric
             // 
-            this.rateLabel.AutoSize = true;
-            this.rateLabel.Location = new System.Drawing.Point(64, 739);
-            this.rateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.rateLabel.Name = "rateLabel";
-            this.rateLabel.Size = new System.Drawing.Size(97, 15);
-            this.rateLabel.TabIndex = 54;
-            this.rateLabel.Text = "运行速度倍率";
-            // 
-            // rateNumeric
-            // 
-            this.rateNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rateNumeric.Location = new System.Drawing.Point(68, 771);
-            this.rateNumeric.Margin = new System.Windows.Forms.Padding(4);
-            this.rateNumeric.Minimum = new decimal(new int[] {
+            this.coreNumeric.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.coreNumeric.Location = new System.Drawing.Point(67, 769);
+            this.coreNumeric.Margin = new System.Windows.Forms.Padding(4);
+            this.coreNumeric.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.coreNumeric.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.rateNumeric.Name = "rateNumeric";
-            this.rateNumeric.Size = new System.Drawing.Size(160, 28);
-            this.rateNumeric.TabIndex = 55;
-            this.rateNumeric.Value = new decimal(new int[] {
+            this.coreNumeric.Name = "coreNumeric";
+            this.coreNumeric.Size = new System.Drawing.Size(160, 28);
+            this.coreNumeric.TabIndex = 62;
+            this.coreNumeric.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            this.coreNumeric.ValueChanged += new System.EventHandler(this.CoreNumeric_ValueChanged);
+            // 
+            // coreLabel
+            // 
+            this.coreLabel.AutoSize = true;
+            this.coreLabel.Location = new System.Drawing.Point(63, 737);
+            this.coreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.coreLabel.Name = "coreLabel";
+            this.coreLabel.Size = new System.Drawing.Size(67, 15);
+            this.coreLabel.TabIndex = 61;
+            this.coreLabel.Text = "核心个数";
             // 
             // randomControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.coreNumeric);
+            this.Controls.Add(this.coreLabel);
             this.Controls.Add(this.processListView);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.randomButton);
             this.Controls.Add(this.processNumNumeric);
             this.Controls.Add(this.processNumLabel);
-            this.Controls.Add(this.rateNumeric);
-            this.Controls.Add(this.rateLabel);
             this.Controls.Add(this.timeSizeNumeric);
             this.Controls.Add(this.timeSizeLabel);
             this.Controls.Add(this.processSettingLabel);
@@ -430,6 +441,7 @@ namespace ProcessOn
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "randomControl";
             this.Size = new System.Drawing.Size(1259, 976);
+            this.Load += new System.EventHandler(this.RandomControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.processNumNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeSizeNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxiumPriorityNumeric)).EndInit();
@@ -438,7 +450,7 @@ namespace ProcessOn
             ((System.ComponentModel.ISupportInitialize)(this.miniumRunNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxiumArrivalNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.miniumArrivalNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rateNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coreNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,7 +483,7 @@ namespace ProcessOn
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label algorithmLabel;
-        private System.Windows.Forms.Label rateLabel;
-        private System.Windows.Forms.NumericUpDown rateNumeric;
+        private System.Windows.Forms.NumericUpDown coreNumeric;
+        private System.Windows.Forms.Label coreLabel;
     }
 }

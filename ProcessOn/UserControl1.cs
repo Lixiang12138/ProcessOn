@@ -31,7 +31,7 @@ namespace ProcessOn
             int timeLength = this.radioButton1.Checked ? -1 : (int)(this.timeSizeNumeric.Value);
             this.ProcessData = ProcessController.CreateRandomProcesses(
                 (int)this.processNumNumeric.Value,
-                (int)this.timeSizeNumeric.Value,
+                timeLength,
                 (int)this.miniumArrivalNumeric.Value,
                 (int)this.maxiumArrivalNumeric.Value,
                 (int)this.miniumRunNumeric.Value,
@@ -61,7 +61,7 @@ namespace ProcessOn
                 ListViewItem tmp = new ListViewItem(ProcessData[i].Name, 0);
                 tmp.SubItems.Add(ProcessData[i].Createtime.ToString());
                 tmp.SubItems.Add(ProcessData[i].Cputime.ToString());
-                tmp.SubItems.Add(radioButton2.Checked ? ProcessData[i].Priority.ToString() : "-");
+                tmp.SubItems.Add(runningType==3 ? ProcessData[i].Priority.ToString() : "-");
                 processListView.Items.Add(tmp);
             }
             //processListView.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
@@ -98,9 +98,20 @@ namespace ProcessOn
         private void StartButton_Click(object sender, EventArgs e)
         {
             StartButtonClicked?.Invoke();
+            ProcessController.CreateProcessSimulation(runningType==3, ProcessData, 1, (int)coreNumeric.Value);
         }
 
         private void ProcessListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CoreNumeric_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RandomControl_Load(object sender, EventArgs e)
         {
 
         }

@@ -44,10 +44,11 @@
             this.readyView = new System.Windows.Forms.ListView();
             this.blockView = new System.Windows.Forms.ListView();
             this.finishView = new System.Windows.Forms.ListView();
-            this.selectBox = new System.Windows.Forms.ComboBox();
+            this.blockBox = new System.Windows.Forms.ComboBox();
             this.timeLabel = new System.Windows.Forms.Label();
             this.efficiencyLabel = new System.Windows.Forms.Label();
             this.sizeLabel = new System.Windows.Forms.Label();
+            this.runningBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.rateNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,7 +104,7 @@
             this.readyLabel.AutoSize = true;
             this.readyLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
             this.readyLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.readyLabel.Location = new System.Drawing.Point(39, 157);
+            this.readyLabel.Location = new System.Drawing.Point(39, 257);
             this.readyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.readyLabel.Name = "readyLabel";
             this.readyLabel.Size = new System.Drawing.Size(86, 31);
@@ -115,7 +116,7 @@
             this.blockLabel.AutoSize = true;
             this.blockLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
             this.blockLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.blockLabel.Location = new System.Drawing.Point(39, 377);
+            this.blockLabel.Location = new System.Drawing.Point(39, 477);
             this.blockLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.blockLabel.Name = "blockLabel";
             this.blockLabel.Size = new System.Drawing.Size(86, 31);
@@ -163,6 +164,7 @@
             0,
             0,
             0});
+            this.rateNumeric.ValueChanged += new System.EventHandler(this.RateNumeric_ValueChanged);
             // 
             // rateLabel
             // 
@@ -178,7 +180,7 @@
             // blockButton
             // 
             this.blockButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.blockButton.Location = new System.Drawing.Point(1040, 377);
+            this.blockButton.Location = new System.Drawing.Point(1041, 403);
             this.blockButton.Name = "blockButton";
             this.blockButton.Size = new System.Drawing.Size(160, 50);
             this.blockButton.TabIndex = 58;
@@ -189,7 +191,7 @@
             // readyButton
             // 
             this.readyButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.readyButton.Location = new System.Drawing.Point(1040, 541);
+            this.readyButton.Location = new System.Drawing.Point(1041, 541);
             this.readyButton.Name = "readyButton";
             this.readyButton.Size = new System.Drawing.Size(160, 50);
             this.readyButton.TabIndex = 59;
@@ -201,13 +203,13 @@
             // 
             this.runningView.Location = new System.Drawing.Point(45, 71);
             this.runningView.Name = "runningView";
-            this.runningView.Size = new System.Drawing.Size(924, 80);
+            this.runningView.Size = new System.Drawing.Size(924, 180);
             this.runningView.TabIndex = 60;
             this.runningView.UseCompatibleStateImageBehavior = false;
             // 
             // readyView
             // 
-            this.readyView.Location = new System.Drawing.Point(45, 191);
+            this.readyView.Location = new System.Drawing.Point(45, 291);
             this.readyView.Name = "readyView";
             this.readyView.Size = new System.Drawing.Size(924, 180);
             this.readyView.TabIndex = 61;
@@ -215,9 +217,9 @@
             // 
             // blockView
             // 
-            this.blockView.Location = new System.Drawing.Point(45, 411);
+            this.blockView.Location = new System.Drawing.Point(45, 511);
             this.blockView.Name = "blockView";
-            this.blockView.Size = new System.Drawing.Size(924, 180);
+            this.blockView.Size = new System.Drawing.Size(924, 80);
             this.blockView.TabIndex = 62;
             this.blockView.UseCompatibleStateImageBehavior = false;
             // 
@@ -229,15 +231,15 @@
             this.finishView.TabIndex = 63;
             this.finishView.UseCompatibleStateImageBehavior = false;
             // 
-            // selectBox
+            // blockBox
             // 
-            this.selectBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.selectBox.FormattingEnabled = true;
-            this.selectBox.Location = new System.Drawing.Point(1040, 485);
-            this.selectBox.Name = "selectBox";
-            this.selectBox.Size = new System.Drawing.Size(160, 35);
-            this.selectBox.TabIndex = 64;
-            this.selectBox.Text = "请选择进程";
+            this.blockBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.blockBox.FormattingEnabled = true;
+            this.blockBox.Location = new System.Drawing.Point(1041, 500);
+            this.blockBox.Name = "blockBox";
+            this.blockBox.Size = new System.Drawing.Size(160, 35);
+            this.blockBox.TabIndex = 64;
+            this.blockBox.Text = "请选择进程";
             // 
             // timeLabel
             // 
@@ -275,14 +277,25 @@
             this.sizeLabel.TabIndex = 67;
             this.sizeLabel.Text = "时间片长度：";
             // 
+            // runningBox
+            // 
+            this.runningBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.runningBox.FormattingEnabled = true;
+            this.runningBox.Location = new System.Drawing.Point(1041, 362);
+            this.runningBox.Name = "runningBox";
+            this.runningBox.Size = new System.Drawing.Size(160, 35);
+            this.runningBox.TabIndex = 68;
+            this.runningBox.Text = "请选择进程";
+            // 
             // ProcessControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.runningBox);
             this.Controls.Add(this.sizeLabel);
             this.Controls.Add(this.efficiencyLabel);
             this.Controls.Add(this.timeLabel);
-            this.Controls.Add(this.selectBox);
+            this.Controls.Add(this.blockBox);
             this.Controls.Add(this.finishView);
             this.Controls.Add(this.blockView);
             this.Controls.Add(this.readyView);
@@ -326,9 +339,10 @@
         private System.Windows.Forms.ListView readyView;
         private System.Windows.Forms.ListView blockView;
         private System.Windows.Forms.ListView finishView;
-        private System.Windows.Forms.ComboBox selectBox;
+        private System.Windows.Forms.ComboBox blockBox;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label efficiencyLabel;
         private System.Windows.Forms.Label sizeLabel;
+        private System.Windows.Forms.ComboBox runningBox;
     }
 }
