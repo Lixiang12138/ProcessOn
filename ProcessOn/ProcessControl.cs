@@ -68,13 +68,26 @@ namespace ProcessOn
             finishView.Columns.Add("创建时间", 100, HorizontalAlignment.Left);
             finishView.Columns.Add("总计用时", 100, HorizontalAlignment.Left);
         }
-        private void showList(ProcessSimulation result)
+
+        public void restartList()
         {
             runningView.Items.Clear();
             readyView.Items.Clear();
             blockView.Items.Clear();
+            timeLabel.Text = "CPU时间: ";
+            statusButton.Text = "开始";
+            rateNumeric.Value = 1;
+            runningStatus = 0;
+        }
+        private void showList(ProcessSimulation result)
+        {
+            timeLabel.Text = "CPU时间: " + result.Time.ToString();
+            efficiencyLabel.Text = "CPU利用率：" + (result.ActualRunningTime * 1.0 / Math.Max(result.Time,1) / result.Core).ToString("0.##%");
+            #region 进程表格
+            runningView.Items.Clear();
+            readyView.Items.Clear();
+            blockView.Items.Clear();
             finishView.Items.Clear();
-            timeLabel.Text = result.Time.ToString();
             List<Process> tmpList  = result.runningPool;
             for (int i = 0; i < tmpList.Count(); i++)
             {
@@ -115,7 +128,18 @@ namespace ProcessOn
                 tmp.SubItems.Add((tmpList[i].Cputime - tmpList[i].Needtime).ToString());
                 finishView.Items.Add(tmp);
             }
+            #endregion
+            #region 下拉框
+            tmpList = result.runningPool;
+            runningBox.Items.Clear();
+            runningBox.Items.AddRange(tmpList.Select(u => u.Name).ToArray());
+
+            tmpList = result.blockedPool;
+            blockBox.Items.Clear();
+            blockBox.Items.AddRange(tmpList.Select(u => u.Name).ToArray());
+            #endregion
         }
+
         private void ProcessControl_Load(object sender, EventArgs e)
         {
 
@@ -140,10 +164,10 @@ namespace ProcessOn
                     statusButton.Text = "继续";
                     break;
                 case 0:
-                    ProcessController.CreateProcessSimulation(false,ProcessPool,100,1);
                     ProcessController.ToForm += showList;
-                    runningStatus = 2;
-                    statusButton.Text = "继续";
+                    ProcessController.Pause();
+                    runningStatus = 1;
+                    statusButton.Text = "暂停";
                     break;
                 case 2:
                     ProcessController.Pause();
@@ -158,22 +182,22 @@ namespace ProcessOn
 
         private void StepButton_Click(object sender, EventArgs e)
         {
-
+            ProcessController.OneTick();
         }
 
         private void BlockButton_Click(object sender, EventArgs e)
         {
-
+            ProcessController.Block(runningBox.Text);
         }
 
         private void ReadyButton_Click(object sender, EventArgs e)
         {
-
+            ProcessController.Ready(blockBox.Text);
         }
 
-        private void TimeLabel_Click(object sender, EventArgs e)
+        private void RateNumeric_ValueChanged(object sender, EventArgs e)
         {
-
+            ProcessController.Speed((int)rateNumeric.Value);
         }
     }
 }

@@ -25,7 +25,8 @@ namespace ProcessOn
 
         public int Speed { get; set; }
         public int Time { get; set; }
-        protected int Core;
+        public int ActualRunningTime { get; set; }
+        public int Core { get; }
         public bool Pause { get; set; }
         private bool runFinished;
 
@@ -39,6 +40,7 @@ namespace ProcessOn
             Time = 0;
             Pause = true;
             runFinished = true;
+            ActualRunningTime = 0;
             this.Core = Core;
         }
 
@@ -73,6 +75,7 @@ namespace ProcessOn
             else
             {
                 Process p = runningPool.SingleOrDefault(u => u.Name == Name);
+                if (p.Needtime <= 0) return;
                 p.State = Process.BLOCKED;
                 blockedPool.Add(p);
                 runningPool.Remove(p);
@@ -93,7 +96,7 @@ namespace ProcessOn
             Process p = blockedPool.SingleOrDefault(u => u.Name == Name);
             p.State = Process.READY;
             readyPool.Push(p);
-            blockedPool.Add(p);
+            blockedPool.Remove(p);
             Flush();
         }
 
@@ -133,22 +136,22 @@ namespace ProcessOn
         public void OneTick()
         {
             //处理完成等待队列
-            if (finishedWaiting.Count > 0){
+            if (finishedWaiting.Count > 0)
+            {
                 finishedWaiting.ForEach(u => {
-                    if (runningPool.Exists(x => x.Name == u.Name)){
-                        runningPool.RemoveAll(x => x.Name == u.Name);
-                        finishedPool.Add(u);
-                    }
+                    runningPool.RemoveAll(x => x.Name == u.Name);
+                    finishedPool.Add(u);
                 });
+                finishedWaiting.Clear();
             }
             //处理超时等待队列
-            if (outOfTimeWaiting.Count > 0){
+            if (outOfTimeWaiting.Count > 0)
+            {
                 outOfTimeWaiting.ForEach(u => {
-                    if (runningPool.Exists(x => x.Name == u.Name)){
-                        runningPool.RemoveAll(x => x.Name == u.Name);
-                        outOfTimeWaiting.Add(u);
-                    }
+                    runningPool.RemoveAll(x => x.Name == u.Name);
+                    readyPool.Push(u);
                 });
+                outOfTimeWaiting.Clear();
             }
             //处理阻塞等待队列
             if (blockWaiting.Count > 0)
@@ -158,7 +161,8 @@ namespace ProcessOn
                     if (runningPool.Exists(x => x.Name == u))
                     {
                         Process p = runningPool.Find(x => x.Name == u);
-                        waitingPool.Add(p);
+                        blockedPool.Add(p);
+                        runningPool.Remove(p);
                     }
                 }
                 );
@@ -183,7 +187,7 @@ namespace ProcessOn
             //就绪队列加入运行队列
             if (runningPool.Count < Core)
             {
-                for(int i = runningPool.Count;i < Core; i++)
+                for (int i = runningPool.Count;i < Core; i++)
                 {
                     if (!readyPool.IsEmpty())
                     {
@@ -201,11 +205,12 @@ namespace ProcessOn
             if (runningPool.Count > 0)
             {
                 //处理每个运行的进程
-                runningPool = runningPool.ForEach(u =>
+                ActualRunningTime += runningPool.Count;
+                runningPool.ForEach(u =>
                 {
                     u.Needtime--;
                     u.Runningtime++;
-                    if (u.Needtime == 0)//已完成
+                    if (u.Needtime <= 0)//已完成
                     {
                         u.State = Process.FINISH;
                         finishedWaiting.Add(u);
@@ -214,9 +219,18 @@ namespace ProcessOn
                     {
                         u.State = Process.READY;
                         OutOfTime(u);
-                        outOfTimeWaiting.Push(u);
+                        outOfTimeWaiting.Add(u);
                     }
                 });
+            }
+            //结 束 了
+            if (runningPool.Count == finishedWaiting.Count && waitingPool.Count == 0 && blockedPool.Count == 0 && readyPool.IsEmpty())
+            {
+                finishedWaiting.ForEach(v => {
+                    runningPool.RemoveAll(x => x.Name == v.Name);
+                    finishedPool.Add(v);
+                });
+                finishedWaiting.Clear();
             }
             Time++;
             Flush();
@@ -227,9 +241,9 @@ namespace ProcessOn
             runFinished = false;
             await Task.Run(() =>
             {
-                int WaitTime = 1000 / Speed;
                 while (!Pause)
                 {
+                    int WaitTime = 1000 / Speed;
                     OneTick();
                     Thread.Sleep(WaitTime);
                 }

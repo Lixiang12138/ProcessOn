@@ -31,6 +31,15 @@ namespace ProcessOn
             processSimulation?.SetPause();
         }
 
+        public static void Shut()
+        {
+            if (processSimulation != null && !processSimulation.IsStoped())
+            {
+                processSimulation.Pause = true;
+            }
+            processSimulation = null;
+        }
+
         public static void Block(string name)
         {
             processSimulation?.BlockProcess(name);

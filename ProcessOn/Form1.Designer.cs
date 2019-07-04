@@ -90,6 +90,8 @@ namespace ProcessOn
         {
             this.panel1.Show();
             this.ProcessPanel.Hide();
+            ProcessController.Shut();
+            this.ProcessControl.restartList();
         }
         #endregion
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
