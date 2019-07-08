@@ -83,11 +83,15 @@ namespace ProcessOn
         {
             this.panel1.Hide();
             this.ProcessPanel.Show();
+            this.ProcessControl.runningType = this.UserControl1.runningType;
+            this.ProcessControl.ProcessPool = this.UserControl1.ProcessData;
         }
         private void ShowMainPanel()
         {
             this.panel1.Show();
             this.ProcessPanel.Hide();
+            ProcessController.Shut();
+            this.ProcessControl.restartList();
         }
         #endregion
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
