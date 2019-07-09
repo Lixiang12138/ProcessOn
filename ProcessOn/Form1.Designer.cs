@@ -35,7 +35,7 @@ namespace ProcessOn
             this.panel1 = new System.Windows.Forms.Panel();
             this.UserControl1 = new ProcessOn.randomControl();
             this.ProcessPanel = new System.Windows.Forms.Panel();
-            this.ProcessControl = new ProcessOn.ProcessControl();
+            this._ProcessControl = new ProcessOn.ProcessControl();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@ namespace ProcessOn
             // 
             // ProcessPanel
             // 
-            this.ProcessPanel.Controls.Add(this.ProcessControl);
+            //this.ProcessPanel.Controls.Add(this.ProcessControl);
             this.ProcessPanel.Location = new System.Drawing.Point(1, 0);
             this.ProcessPanel.Name = "ProcessPanel";
             this.ProcessPanel.Size = new System.Drawing.Size(1259, 976);
@@ -82,7 +82,7 @@ namespace ProcessOn
         private System.Windows.Forms.Panel panel1;
         private randomControl UserControl1;
         private Panel ProcessPanel;
-        private ProcessControl ProcessControl;
+        private ProcessControl _ProcessControl;
     }
 }
 

@@ -14,8 +14,6 @@ namespace ProcessOn
     {
         public event Action ReturnButtonClicked;
         public List<Process> ProcessPool;
-        public int RunningStatus { get; set; }
-        public int RunningType { get; set; }
         #region 常量定义
         /**
          * <summary>
@@ -36,6 +34,24 @@ namespace ProcessOn
          */
         private const int PAUSE_STATUS = 2;
         #endregion
+        private int _runningStatus;
+        public int RunningStatus {
+            get => _runningStatus;
+            set
+            {
+                _runningStatus = value;
+                if(value == PAUSE_STATUS)
+                {
+                    StatusButton.Text = "继续";
+                }
+                else
+                {
+                    StatusButton.Text = "暂停";
+                }
+            }
+        }
+        public int RunningType { get; set; }
+        
         public ProcessControl()
         {
             InitializeComponent();
@@ -174,27 +190,11 @@ namespace ProcessOn
 
         private void StatusButton_Click(object sender, EventArgs e)
         {
-            switch (RunningStatus)
-            {
-                case RUNNING_STATUS:
-                    ProcessController.Pause();
-                    RunningStatus = PAUSE_STATUS;
-                    StatusButton.Text = "继续";
-                    break;
-                case INITIAL_STATUS:
-                    ProcessController.Pause();
-                    RunningStatus = RUNNING_STATUS;
-                    StatusButton.Text = "暂停";
-                    break;
-                case PAUSE_STATUS:
-                    ProcessController.Pause();
-                    RunningStatus = RUNNING_STATUS;
-                    StatusButton.Text = "暂停";
-                    break;
-                default:
-                    break;
-
-            }
+            ProcessController.Pause();
+            if (RunningStatus == RUNNING_STATUS)
+                RunningStatus = PAUSE_STATUS;
+            else
+                RunningStatus = RUNNING_STATUS;
         }
 
         private void StepButton_Click(object sender, EventArgs e)
@@ -203,7 +203,6 @@ namespace ProcessOn
             if(RunningStatus != PAUSE_STATUS)
                 ProcessController.Pause();
             RunningStatus = PAUSE_STATUS;
-            StatusButton.Text = "继续";
             ProcessController.OneTick();
         }
 
