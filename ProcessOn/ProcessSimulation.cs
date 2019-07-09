@@ -61,7 +61,9 @@ namespace ProcessOn
         protected virtual void OutOfTime(Process p) { }
 
         /**
+         * <summary>
          *  阻塞当前进程
+         *  </summary>
          */
         public void BlockProcess(string Name)
         {
@@ -140,9 +142,13 @@ namespace ProcessOn
             //处理完成等待队列
             if (finishedWaiting.Count > 0)
             {
-                finishedWaiting.ForEach(u => {
-                    runningPool.RemoveAll(x => x.Name == u.Name);
-                    finishedPool.Add(u);
+                finishedWaiting.ForEach(u =>
+                {
+                    if (runningPool.Exists(x => x.Name == u.Name))
+                    {
+                        runningPool.RemoveAll(x => x.Name == u.Name);
+                        finishedPool.Add(u);
+                    }
                 });
                 finishedWaiting.Clear();
             }
@@ -150,8 +156,11 @@ namespace ProcessOn
             if (outOfTimeWaiting.Count > 0)
             {
                 outOfTimeWaiting.ForEach(u => {
-                    runningPool.RemoveAll(x => x.Name == u.Name);
-                    readyPool.Push(u);
+                    if (runningPool.Exists(x => x.Name == u.Name))
+                    {
+                        runningPool.RemoveAll(x => x.Name == u.Name);
+                        readyPool.Push(u);
+                    }
                 });
                 outOfTimeWaiting.Clear();
             }
