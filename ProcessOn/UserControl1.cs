@@ -20,85 +20,74 @@ namespace ProcessOn
             InitializeComponent();
             // Create columns for the items and subitems.
             // Width of -2 indicates auto-size.
-            processListView.Columns.Add("进程编号", 100, HorizontalAlignment.Left);
-            processListView.Columns.Add("到达时间", 100, HorizontalAlignment.Left);
-            processListView.Columns.Add("运行时间", 100, HorizontalAlignment.Left);
-            processListView.Columns.Add("初始优先数", 100, HorizontalAlignment.Left);
+            ProcessListView.Columns.Add("进程编号", 100, HorizontalAlignment.Left);
+            ProcessListView.Columns.Add("到达时间", 100, HorizontalAlignment.Left);
+            ProcessListView.Columns.Add("运行时间", 100, HorizontalAlignment.Left);
+            ProcessListView.Columns.Add("初始优先数", 100, HorizontalAlignment.Left);
         }
 
         private void RandomButton_Click(object sender, EventArgs e)
         {
-            int timeLength = this.radioButton1.Checked ? -1 : (int)(this.timeSizeNumeric.Value);
+            int timeLength = this.RadioButton1.Checked ? -1 : (int)(this.TimeSizeNumeric.Value);
             this.ProcessData = ProcessController.CreateRandomProcesses(
-                (int)this.processNumNumeric.Value,
+                (int)this.ProcessNumNumeric.Value,
                 timeLength,
-                (int)this.miniumArrivalNumeric.Value,
-                (int)this.maxiumArrivalNumeric.Value,
-                (int)this.miniumRunNumeric.Value,
-                (int)this.maxiumrunNumeric.Value,
-                (int)this.miniumPriorityNumeric.Value,
-                (int)this.maxiumPriorityNumeric.Value
+                (int)this.MiniumArrivalNumeric.Value,
+                (int)this.MaxiumArrivalNumeric.Value,
+                (int)this.MiniumRunNumeric.Value,
+                (int)this.MaxiumrunNumeric.Value,
+                (int)this.MiniumPriorityNumeric.Value,
+                (int)this.MaxiumPriorityNumeric.Value
                 );
             // Set the view to show details.
-            processListView.View = View.Details;
+            ProcessListView.View = View.Details;
             // Allow the user to edit item text.
-            processListView.LabelEdit = true;
+            ProcessListView.LabelEdit = true;
             // Allow the user to rearrange columns.
-            processListView.AllowColumnReorder = true;
-            // Display check boxes.
-            //listView1.CheckBoxes = true;
-            // Select the item and subitems when selection is made.
-            //listView1.FullRowSelect = true;
+            ProcessListView.AllowColumnReorder = true;
             // Display grid lines.
-            processListView.GridLines = true;
-            // Sort the items in the list in ascending order.
-            // processListView.Sorting = SortOrder.Ascending;
+            ProcessListView.GridLines = true;
 
             //Add the items to the ListView.
-            processListView.Items.Clear();
+            ProcessListView.Items.Clear();
             for(int i=0;i<ProcessData.Count();i++)
             {
                 ListViewItem tmp = new ListViewItem(ProcessData[i].Name, 0);
                 tmp.SubItems.Add(ProcessData[i].Createtime.ToString());
                 tmp.SubItems.Add(ProcessData[i].Cputime.ToString());
                 tmp.SubItems.Add(runningType==3 ? ProcessData[i].Priority.ToString() : "-");
-                processListView.Items.Add(tmp);
+                ProcessListView.Items.Add(tmp);
             }
-            //processListView.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
-
-            // Create two ImageList objects.
-            //ImageList imageListSmall = new ImageList();
-            //ImageList imageListLarge = new ImageList();
         }
 
         private void RadioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            this.maxiumPriorityNumeric.Enabled = true;
-            this.miniumPriorityNumeric.Enabled = true;
-            this.timeSizeNumeric.Enabled = true;
+            this.MaxiumPriorityNumeric.Enabled = true;
+            this.MiniumPriorityNumeric.Enabled = true;
+            this.TimeSizeNumeric.Enabled = true;
             this.runningType = 3;
         }
 
         private void RadioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            this.maxiumPriorityNumeric.Enabled = false;
-            this.miniumPriorityNumeric.Enabled = false;
-            this.timeSizeNumeric.Enabled = true;
+            this.MaxiumPriorityNumeric.Enabled = false;
+            this.MiniumPriorityNumeric.Enabled = false;
+            this.TimeSizeNumeric.Enabled = true;
             this.runningType = 2;
         }
 
         private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            this.maxiumPriorityNumeric.Enabled = false;
-            this.miniumPriorityNumeric.Enabled = false;
-            this.timeSizeNumeric.Enabled = false;
+            this.MaxiumPriorityNumeric.Enabled = false;
+            this.MiniumPriorityNumeric.Enabled = false;
+            this.TimeSizeNumeric.Enabled = false;
             this.runningType = 1;
         }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
             StartButtonClicked?.Invoke();
-            ProcessController.CreateProcessSimulation(runningType==3, ProcessData, 1, (int)coreNumeric.Value);
+            ProcessController.CreateProcessSimulation(runningType==3, ProcessData, 1, (int)CoreNumeric.Value);
         }
 
         private void ProcessListView_SelectedIndexChanged(object sender, EventArgs e)

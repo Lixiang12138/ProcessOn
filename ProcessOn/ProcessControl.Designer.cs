@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             this.ProcessLabel = new System.Windows.Forms.Label();
-            this.statusButton = new System.Windows.Forms.Button();
-            this.returnButton = new System.Windows.Forms.Button();
-            this.runningLabel = new System.Windows.Forms.Label();
-            this.readyLabel = new System.Windows.Forms.Label();
-            this.blockLabel = new System.Windows.Forms.Label();
-            this.finishLabel = new System.Windows.Forms.Label();
-            this.stepButton = new System.Windows.Forms.Button();
-            this.rateNumeric = new System.Windows.Forms.NumericUpDown();
-            this.rateLabel = new System.Windows.Forms.Label();
-            this.blockButton = new System.Windows.Forms.Button();
-            this.readyButton = new System.Windows.Forms.Button();
-            this.runningView = new System.Windows.Forms.ListView();
-            this.readyView = new System.Windows.Forms.ListView();
-            this.blockView = new System.Windows.Forms.ListView();
-            this.finishView = new System.Windows.Forms.ListView();
-            this.blockBox = new System.Windows.Forms.ComboBox();
-            this.timeLabel = new System.Windows.Forms.Label();
-            this.efficiencyLabel = new System.Windows.Forms.Label();
-            this.sizeLabel = new System.Windows.Forms.Label();
-            this.runningBox = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.rateNumeric)).BeginInit();
+            this.StatusButton = new System.Windows.Forms.Button();
+            this.ReturnButton = new System.Windows.Forms.Button();
+            this.RunningLabel = new System.Windows.Forms.Label();
+            this.ReadyLabel = new System.Windows.Forms.Label();
+            this.BlockLabel = new System.Windows.Forms.Label();
+            this.FinishLabel = new System.Windows.Forms.Label();
+            this.StepButton = new System.Windows.Forms.Button();
+            this.RateNumeric = new System.Windows.Forms.NumericUpDown();
+            this.RateLabel = new System.Windows.Forms.Label();
+            this.BlockButton = new System.Windows.Forms.Button();
+            this.ReadyButton = new System.Windows.Forms.Button();
+            this.RunningView = new System.Windows.Forms.ListView();
+            this.ReadyView = new System.Windows.Forms.ListView();
+            this.BlockView = new System.Windows.Forms.ListView();
+            this.FinishView = new System.Windows.Forms.ListView();
+            this.BlockBox = new System.Windows.Forms.ComboBox();
+            this.TimeLabel = new System.Windows.Forms.Label();
+            this.EfficiencyLabel = new System.Windows.Forms.Label();
+            this.SizeLabel = new System.Windows.Forms.Label();
+            this.RunningBox = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.RateNumeric)).BeginInit();
             this.SuspendLayout();
             // 
             // ProcessLabel
@@ -66,256 +66,256 @@
             // 
             // statusButton
             // 
-            this.statusButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.statusButton.Location = new System.Drawing.Point(1040, 170);
-            this.statusButton.Name = "statusButton";
-            this.statusButton.Size = new System.Drawing.Size(125, 50);
-            this.statusButton.TabIndex = 36;
-            this.statusButton.Text = "开始";
-            this.statusButton.UseVisualStyleBackColor = true;
-            this.statusButton.Click += new System.EventHandler(this.StatusButton_Click);
+            this.StatusButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.StatusButton.Location = new System.Drawing.Point(1040, 170);
+            this.StatusButton.Name = "statusButton";
+            this.StatusButton.Size = new System.Drawing.Size(125, 50);
+            this.StatusButton.TabIndex = 36;
+            this.StatusButton.Text = "开始";
+            this.StatusButton.UseVisualStyleBackColor = true;
+            this.StatusButton.Click += new System.EventHandler(this.StatusButton_Click);
             // 
             // returnButton
             // 
-            this.returnButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.returnButton.ForeColor = System.Drawing.Color.Red;
-            this.returnButton.Location = new System.Drawing.Point(1040, 762);
-            this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(125, 49);
-            this.returnButton.TabIndex = 40;
-            this.returnButton.Text = "终止";
-            this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.ReturnButton_Click);
+            this.ReturnButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ReturnButton.ForeColor = System.Drawing.Color.Red;
+            this.ReturnButton.Location = new System.Drawing.Point(1040, 762);
+            this.ReturnButton.Name = "returnButton";
+            this.ReturnButton.Size = new System.Drawing.Size(125, 49);
+            this.ReturnButton.TabIndex = 40;
+            this.ReturnButton.Text = "终止";
+            this.ReturnButton.UseVisualStyleBackColor = true;
+            this.ReturnButton.Click += new System.EventHandler(this.ReturnButton_Click);
             // 
             // runningLabel
             // 
-            this.runningLabel.AutoSize = true;
-            this.runningLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.runningLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.runningLabel.Location = new System.Drawing.Point(39, 37);
-            this.runningLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.runningLabel.Name = "runningLabel";
-            this.runningLabel.Size = new System.Drawing.Size(110, 31);
-            this.runningLabel.TabIndex = 41;
-            this.runningLabel.Text = "正在运行";
+            this.RunningLabel.AutoSize = true;
+            this.RunningLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
+            this.RunningLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RunningLabel.Location = new System.Drawing.Point(39, 37);
+            this.RunningLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RunningLabel.Name = "runningLabel";
+            this.RunningLabel.Size = new System.Drawing.Size(110, 31);
+            this.RunningLabel.TabIndex = 41;
+            this.RunningLabel.Text = "正在运行";
             // 
             // readyLabel
             // 
-            this.readyLabel.AutoSize = true;
-            this.readyLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.readyLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.readyLabel.Location = new System.Drawing.Point(39, 257);
-            this.readyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.readyLabel.Name = "readyLabel";
-            this.readyLabel.Size = new System.Drawing.Size(86, 31);
-            this.readyLabel.TabIndex = 42;
-            this.readyLabel.Text = "已就绪";
+            this.ReadyLabel.AutoSize = true;
+            this.ReadyLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
+            this.ReadyLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ReadyLabel.Location = new System.Drawing.Point(39, 257);
+            this.ReadyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ReadyLabel.Name = "readyLabel";
+            this.ReadyLabel.Size = new System.Drawing.Size(86, 31);
+            this.ReadyLabel.TabIndex = 42;
+            this.ReadyLabel.Text = "已就绪";
             // 
             // blockLabel
             // 
-            this.blockLabel.AutoSize = true;
-            this.blockLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.blockLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.blockLabel.Location = new System.Drawing.Point(39, 477);
-            this.blockLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.blockLabel.Name = "blockLabel";
-            this.blockLabel.Size = new System.Drawing.Size(86, 31);
-            this.blockLabel.TabIndex = 43;
-            this.blockLabel.Text = "阻塞中";
+            this.BlockLabel.AutoSize = true;
+            this.BlockLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
+            this.BlockLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BlockLabel.Location = new System.Drawing.Point(39, 477);
+            this.BlockLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.BlockLabel.Name = "blockLabel";
+            this.BlockLabel.Size = new System.Drawing.Size(86, 31);
+            this.BlockLabel.TabIndex = 43;
+            this.BlockLabel.Text = "阻塞中";
             // 
             // finishLabel
             // 
-            this.finishLabel.AutoSize = true;
-            this.finishLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.finishLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.finishLabel.Location = new System.Drawing.Point(39, 597);
-            this.finishLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.finishLabel.Name = "finishLabel";
-            this.finishLabel.Size = new System.Drawing.Size(86, 31);
-            this.finishLabel.TabIndex = 44;
-            this.finishLabel.Text = "已完成";
+            this.FinishLabel.AutoSize = true;
+            this.FinishLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
+            this.FinishLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FinishLabel.Location = new System.Drawing.Point(39, 597);
+            this.FinishLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FinishLabel.Name = "finishLabel";
+            this.FinishLabel.Size = new System.Drawing.Size(86, 31);
+            this.FinishLabel.TabIndex = 44;
+            this.FinishLabel.Text = "已完成";
             // 
             // stepButton
             // 
-            this.stepButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.stepButton.Location = new System.Drawing.Point(1041, 270);
-            this.stepButton.Name = "stepButton";
-            this.stepButton.Size = new System.Drawing.Size(125, 50);
-            this.stepButton.TabIndex = 45;
-            this.stepButton.Text = "单步运行";
-            this.stepButton.UseVisualStyleBackColor = true;
-            this.stepButton.Click += new System.EventHandler(this.StepButton_Click);
+            this.StepButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.StepButton.Location = new System.Drawing.Point(1041, 270);
+            this.StepButton.Name = "stepButton";
+            this.StepButton.Size = new System.Drawing.Size(125, 50);
+            this.StepButton.TabIndex = 45;
+            this.StepButton.Text = "单步运行";
+            this.StepButton.UseVisualStyleBackColor = true;
+            this.StepButton.Click += new System.EventHandler(this.StepButton_Click);
             // 
             // rateNumeric
             // 
-            this.rateNumeric.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rateNumeric.Location = new System.Drawing.Point(1041, 687);
-            this.rateNumeric.Margin = new System.Windows.Forms.Padding(4);
-            this.rateNumeric.Minimum = new decimal(new int[] {
+            this.RateNumeric.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RateNumeric.Location = new System.Drawing.Point(1041, 687);
+            this.RateNumeric.Margin = new System.Windows.Forms.Padding(4);
+            this.RateNumeric.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.rateNumeric.Name = "rateNumeric";
-            this.rateNumeric.Size = new System.Drawing.Size(160, 30);
-            this.rateNumeric.TabIndex = 57;
-            this.rateNumeric.Value = new decimal(new int[] {
+            this.RateNumeric.Name = "rateNumeric";
+            this.RateNumeric.Size = new System.Drawing.Size(160, 30);
+            this.RateNumeric.TabIndex = 57;
+            this.RateNumeric.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.rateNumeric.ValueChanged += new System.EventHandler(this.RateNumeric_ValueChanged);
+            this.RateNumeric.ValueChanged += new System.EventHandler(this.RateNumeric_ValueChanged);
             // 
             // rateLabel
             // 
-            this.rateLabel.AutoSize = true;
-            this.rateLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rateLabel.Location = new System.Drawing.Point(1035, 638);
-            this.rateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.rateLabel.Name = "rateLabel";
-            this.rateLabel.Size = new System.Drawing.Size(92, 27);
-            this.rateLabel.TabIndex = 56;
-            this.rateLabel.Text = "运行速度";
+            this.RateLabel.AutoSize = true;
+            this.RateLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RateLabel.Location = new System.Drawing.Point(1035, 638);
+            this.RateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RateLabel.Name = "rateLabel";
+            this.RateLabel.Size = new System.Drawing.Size(92, 27);
+            this.RateLabel.TabIndex = 56;
+            this.RateLabel.Text = "运行速度";
             // 
             // blockButton
             // 
-            this.blockButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.blockButton.Location = new System.Drawing.Point(1041, 403);
-            this.blockButton.Name = "blockButton";
-            this.blockButton.Size = new System.Drawing.Size(160, 50);
-            this.blockButton.TabIndex = 58;
-            this.blockButton.Text = "阻塞当前进程";
-            this.blockButton.UseVisualStyleBackColor = true;
-            this.blockButton.Click += new System.EventHandler(this.BlockButton_Click);
+            this.BlockButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BlockButton.Location = new System.Drawing.Point(1041, 403);
+            this.BlockButton.Name = "blockButton";
+            this.BlockButton.Size = new System.Drawing.Size(160, 50);
+            this.BlockButton.TabIndex = 58;
+            this.BlockButton.Text = "阻塞当前进程";
+            this.BlockButton.UseVisualStyleBackColor = true;
+            this.BlockButton.Click += new System.EventHandler(this.BlockButton_Click);
             // 
             // readyButton
             // 
-            this.readyButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.readyButton.Location = new System.Drawing.Point(1041, 541);
-            this.readyButton.Name = "readyButton";
-            this.readyButton.Size = new System.Drawing.Size(160, 50);
-            this.readyButton.TabIndex = 59;
-            this.readyButton.Text = "就绪选中进程";
-            this.readyButton.UseVisualStyleBackColor = true;
-            this.readyButton.Click += new System.EventHandler(this.ReadyButton_Click);
+            this.ReadyButton.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ReadyButton.Location = new System.Drawing.Point(1041, 541);
+            this.ReadyButton.Name = "readyButton";
+            this.ReadyButton.Size = new System.Drawing.Size(160, 50);
+            this.ReadyButton.TabIndex = 59;
+            this.ReadyButton.Text = "就绪选中进程";
+            this.ReadyButton.UseVisualStyleBackColor = true;
+            this.ReadyButton.Click += new System.EventHandler(this.ReadyButton_Click);
             // 
             // runningView
             // 
-            this.runningView.Location = new System.Drawing.Point(45, 71);
-            this.runningView.Name = "runningView";
-            this.runningView.Size = new System.Drawing.Size(924, 180);
-            this.runningView.TabIndex = 60;
-            this.runningView.UseCompatibleStateImageBehavior = false;
+            this.RunningView.Location = new System.Drawing.Point(45, 71);
+            this.RunningView.Name = "runningView";
+            this.RunningView.Size = new System.Drawing.Size(924, 180);
+            this.RunningView.TabIndex = 60;
+            this.RunningView.UseCompatibleStateImageBehavior = false;
             // 
-            // readyView
+            // ReadyView
             // 
-            this.readyView.Location = new System.Drawing.Point(45, 291);
-            this.readyView.Name = "readyView";
-            this.readyView.Size = new System.Drawing.Size(924, 180);
-            this.readyView.TabIndex = 61;
-            this.readyView.UseCompatibleStateImageBehavior = false;
+            this.ReadyView.Location = new System.Drawing.Point(45, 291);
+            this.ReadyView.Name = "ReadyView";
+            this.ReadyView.Size = new System.Drawing.Size(924, 180);
+            this.ReadyView.TabIndex = 61;
+            this.ReadyView.UseCompatibleStateImageBehavior = false;
             // 
             // blockView
             // 
-            this.blockView.Location = new System.Drawing.Point(45, 511);
-            this.blockView.Name = "blockView";
-            this.blockView.Size = new System.Drawing.Size(924, 80);
-            this.blockView.TabIndex = 62;
-            this.blockView.UseCompatibleStateImageBehavior = false;
+            this.BlockView.Location = new System.Drawing.Point(45, 511);
+            this.BlockView.Name = "blockView";
+            this.BlockView.Size = new System.Drawing.Size(924, 80);
+            this.BlockView.TabIndex = 62;
+            this.BlockView.UseCompatibleStateImageBehavior = false;
             // 
             // finishView
             // 
-            this.finishView.Location = new System.Drawing.Point(45, 631);
-            this.finishView.Name = "finishView";
-            this.finishView.Size = new System.Drawing.Size(924, 180);
-            this.finishView.TabIndex = 63;
-            this.finishView.UseCompatibleStateImageBehavior = false;
+            this.FinishView.Location = new System.Drawing.Point(45, 631);
+            this.FinishView.Name = "finishView";
+            this.FinishView.Size = new System.Drawing.Size(924, 180);
+            this.FinishView.TabIndex = 63;
+            this.FinishView.UseCompatibleStateImageBehavior = false;
             // 
             // blockBox
             // 
-            this.blockBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.blockBox.FormattingEnabled = true;
-            this.blockBox.Location = new System.Drawing.Point(1041, 500);
-            this.blockBox.Name = "blockBox";
-            this.blockBox.Size = new System.Drawing.Size(160, 35);
-            this.blockBox.TabIndex = 64;
-            this.blockBox.Text = "请选择进程";
+            this.BlockBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BlockBox.FormattingEnabled = true;
+            this.BlockBox.Location = new System.Drawing.Point(1041, 500);
+            this.BlockBox.Name = "blockBox";
+            this.BlockBox.Size = new System.Drawing.Size(160, 35);
+            this.BlockBox.TabIndex = 64;
+            this.BlockBox.Text = "请选择进程";
             // 
             // timeLabel
             // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.timeLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.timeLabel.Location = new System.Drawing.Point(998, 30);
-            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(135, 31);
-            this.timeLabel.TabIndex = 65;
-            this.timeLabel.Text = "CPU时间：";
+            this.TimeLabel.AutoSize = true;
+            this.TimeLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
+            this.TimeLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TimeLabel.Location = new System.Drawing.Point(998, 30);
+            this.TimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.TimeLabel.Name = "timeLabel";
+            this.TimeLabel.Size = new System.Drawing.Size(135, 31);
+            this.TimeLabel.TabIndex = 65;
+            this.TimeLabel.Text = "CPU时间：";
             // 
             // efficiencyLabel
             // 
-            this.efficiencyLabel.AutoSize = true;
-            this.efficiencyLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.efficiencyLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.efficiencyLabel.Location = new System.Drawing.Point(998, 70);
-            this.efficiencyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.efficiencyLabel.Name = "efficiencyLabel";
-            this.efficiencyLabel.Size = new System.Drawing.Size(159, 31);
-            this.efficiencyLabel.TabIndex = 66;
-            this.efficiencyLabel.Text = "CPU利用率：";
+            this.EfficiencyLabel.AutoSize = true;
+            this.EfficiencyLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
+            this.EfficiencyLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.EfficiencyLabel.Location = new System.Drawing.Point(998, 70);
+            this.EfficiencyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EfficiencyLabel.Name = "efficiencyLabel";
+            this.EfficiencyLabel.Size = new System.Drawing.Size(159, 31);
+            this.EfficiencyLabel.TabIndex = 66;
+            this.EfficiencyLabel.Text = "CPU利用率：";
             // 
             // sizeLabel
             // 
-            this.sizeLabel.AutoSize = true;
-            this.sizeLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.sizeLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.sizeLabel.Location = new System.Drawing.Point(998, 110);
-            this.sizeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.sizeLabel.Name = "sizeLabel";
-            this.sizeLabel.Size = new System.Drawing.Size(158, 31);
-            this.sizeLabel.TabIndex = 67;
-            this.sizeLabel.Text = "时间片长度：";
+            this.SizeLabel.AutoSize = true;
+            this.SizeLabel.Cursor = System.Windows.Forms.Cursors.SizeNESW;
+            this.SizeLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.SizeLabel.Location = new System.Drawing.Point(998, 110);
+            this.SizeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.SizeLabel.Name = "sizeLabel";
+            this.SizeLabel.Size = new System.Drawing.Size(158, 31);
+            this.SizeLabel.TabIndex = 67;
+            this.SizeLabel.Text = "时间片长度：";
             // 
             // runningBox
             // 
-            this.runningBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.runningBox.FormattingEnabled = true;
-            this.runningBox.Location = new System.Drawing.Point(1041, 362);
-            this.runningBox.Name = "runningBox";
-            this.runningBox.Size = new System.Drawing.Size(160, 35);
-            this.runningBox.TabIndex = 68;
-            this.runningBox.Text = "请选择进程";
+            this.RunningBox.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.RunningBox.FormattingEnabled = true;
+            this.RunningBox.Location = new System.Drawing.Point(1041, 362);
+            this.RunningBox.Name = "runningBox";
+            this.RunningBox.Size = new System.Drawing.Size(160, 35);
+            this.RunningBox.TabIndex = 68;
+            this.RunningBox.Text = "请选择进程";
             // 
             // ProcessControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.runningBox);
-            this.Controls.Add(this.sizeLabel);
-            this.Controls.Add(this.efficiencyLabel);
-            this.Controls.Add(this.timeLabel);
-            this.Controls.Add(this.blockBox);
-            this.Controls.Add(this.finishView);
-            this.Controls.Add(this.blockView);
-            this.Controls.Add(this.readyView);
-            this.Controls.Add(this.runningView);
-            this.Controls.Add(this.readyButton);
-            this.Controls.Add(this.blockButton);
-            this.Controls.Add(this.rateNumeric);
-            this.Controls.Add(this.rateLabel);
-            this.Controls.Add(this.stepButton);
-            this.Controls.Add(this.finishLabel);
-            this.Controls.Add(this.blockLabel);
-            this.Controls.Add(this.readyLabel);
-            this.Controls.Add(this.runningLabel);
-            this.Controls.Add(this.returnButton);
-            this.Controls.Add(this.statusButton);
+            this.Controls.Add(this.RunningBox);
+            this.Controls.Add(this.SizeLabel);
+            this.Controls.Add(this.EfficiencyLabel);
+            this.Controls.Add(this.TimeLabel);
+            this.Controls.Add(this.BlockBox);
+            this.Controls.Add(this.FinishView);
+            this.Controls.Add(this.BlockView);
+            this.Controls.Add(this.ReadyView);
+            this.Controls.Add(this.RunningView);
+            this.Controls.Add(this.ReadyButton);
+            this.Controls.Add(this.BlockButton);
+            this.Controls.Add(this.RateNumeric);
+            this.Controls.Add(this.RateLabel);
+            this.Controls.Add(this.StepButton);
+            this.Controls.Add(this.FinishLabel);
+            this.Controls.Add(this.BlockLabel);
+            this.Controls.Add(this.ReadyLabel);
+            this.Controls.Add(this.RunningLabel);
+            this.Controls.Add(this.ReturnButton);
+            this.Controls.Add(this.StatusButton);
             this.Controls.Add(this.ProcessLabel);
             this.Name = "ProcessControl";
             this.Size = new System.Drawing.Size(1259, 966);
             this.Load += new System.EventHandler(this.ProcessControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.rateNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RateNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,25 +324,25 @@
         #endregion
 
         private System.Windows.Forms.Label ProcessLabel;
-        private System.Windows.Forms.Button statusButton;
-        private System.Windows.Forms.Button returnButton;
-        private System.Windows.Forms.Label runningLabel;
-        private System.Windows.Forms.Label readyLabel;
-        private System.Windows.Forms.Label blockLabel;
-        private System.Windows.Forms.Label finishLabel;
-        private System.Windows.Forms.Button stepButton;
-        private System.Windows.Forms.NumericUpDown rateNumeric;
-        private System.Windows.Forms.Label rateLabel;
-        private System.Windows.Forms.Button blockButton;
-        private System.Windows.Forms.Button readyButton;
-        private System.Windows.Forms.ListView runningView;
-        private System.Windows.Forms.ListView readyView;
-        private System.Windows.Forms.ListView blockView;
-        private System.Windows.Forms.ListView finishView;
-        private System.Windows.Forms.ComboBox blockBox;
-        private System.Windows.Forms.Label timeLabel;
-        private System.Windows.Forms.Label efficiencyLabel;
-        private System.Windows.Forms.Label sizeLabel;
-        private System.Windows.Forms.ComboBox runningBox;
+        private System.Windows.Forms.Button StatusButton;
+        private System.Windows.Forms.Button ReturnButton;
+        private System.Windows.Forms.Label RunningLabel;
+        private System.Windows.Forms.Label ReadyLabel;
+        private System.Windows.Forms.Label BlockLabel;
+        private System.Windows.Forms.Label FinishLabel;
+        private System.Windows.Forms.Button StepButton;
+        private System.Windows.Forms.NumericUpDown RateNumeric;
+        private System.Windows.Forms.Label RateLabel;
+        private System.Windows.Forms.Button BlockButton;
+        private System.Windows.Forms.Button ReadyButton;
+        private System.Windows.Forms.ListView RunningView;
+        private System.Windows.Forms.ListView ReadyView;
+        private System.Windows.Forms.ListView BlockView;
+        private System.Windows.Forms.ListView FinishView;
+        private System.Windows.Forms.ComboBox BlockBox;
+        private System.Windows.Forms.Label TimeLabel;
+        private System.Windows.Forms.Label EfficiencyLabel;
+        private System.Windows.Forms.Label SizeLabel;
+        private System.Windows.Forms.ComboBox RunningBox;
     }
 }
