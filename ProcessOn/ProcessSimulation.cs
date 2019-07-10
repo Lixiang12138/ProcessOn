@@ -17,7 +17,7 @@ namespace ProcessOn
         public List<Process> finishedPool;
         public List<Process> blockedPool;
 
-        private List<string> blockWaiting = new List<string>();
+        private List<string> blockWaitingPool = new List<string>();
         
         private List<Process> finishedWaiting = new List<Process>();
         
@@ -74,7 +74,7 @@ namespace ProcessOn
             }
             if (!IsStoped())//正在模拟
             {
-                blockWaiting.Add(Name);
+                blockWaitingPool.Add(Name);
             }
             else
             {
@@ -105,7 +105,10 @@ namespace ProcessOn
         }
 
         /**
-         * 暂停或继续。一旦状态从暂停变为运行，则检查模拟线程是否存在，不存在则开始模拟。
+         * <summary>
+         * 暂停或继续。
+         * </summary>
+         * 一旦状态从暂停变为运行，则检查模拟线程是否存在，不存在则开始模拟。
          */
         public void SetPause()
         {
@@ -135,7 +138,9 @@ namespace ProcessOn
         }
 
         /**
+         * <summary>
          * 步长为1 tick的模拟.
+         * </summary>
          */
         public void OneTick()
         {
@@ -165,9 +170,9 @@ namespace ProcessOn
                 outOfTimeWaiting.Clear();
             }
             //处理阻塞等待队列
-            if (blockWaiting.Count > 0)
+            if (blockWaitingPool.Count > 0)
             {
-                blockWaiting.ForEach(u =>
+                blockWaitingPool.ForEach(u =>
                 {
                     if (runningPool.Exists(x => x.Name == u))
                     {
@@ -177,7 +182,7 @@ namespace ProcessOn
                     }
                 }
                 );
-                blockWaiting.Clear();
+                blockWaitingPool.Clear();
             }
             //判断是否停机
             if (waitingPool.Count == 0 && runningPool.Count == 0 && blockedPool.Count == 0 && readyPool.IsEmpty())

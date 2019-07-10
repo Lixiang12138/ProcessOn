@@ -87,7 +87,12 @@ namespace ProcessOn
         private void StartButton_Click(object sender, EventArgs e)
         {
             StartButtonClicked?.Invoke();
-            ProcessController.CreateProcessSimulation(runningType==3, ProcessData, 1, (int)CoreNumeric.Value);
+            List<Process> CopyProcessData = new List<Process>();
+            ProcessData.ForEach((u) =>
+            {
+                CopyProcessData.Add(new Process(u));
+            });
+            ProcessController.CreateProcessSimulation(runningType==3, CopyProcessData, 1, (int)CoreNumeric.Value);
         }
 
         private void ProcessListView_SelectedIndexChanged(object sender, EventArgs e)

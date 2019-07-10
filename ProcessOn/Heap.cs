@@ -15,7 +15,6 @@ namespace ProcessOn
         {
             Elements = new T[101];
             Size = 0;
-            Elements = new T[100];
         }
         public void Push(T element)
         {

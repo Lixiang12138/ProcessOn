@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace ProcessOn.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class ProcessControllerTests
     {
-        [TestMethod()]
+        [TestMethod]
         public async Task CreateProcessSimulationTestAsync()
         {
             int min_a = 1;

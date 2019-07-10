@@ -26,7 +26,19 @@ namespace ProcessOn
             this.State = state;
             this.Next = null;
         }
-
+        public Process(Process src)
+        {
+            this.Name = src.Name;
+            this.Priority = src.Priority;
+            this.Round = src.Round;
+            this.Cputime = src.Cputime;
+            this.Count = src.Count;
+            this.Needtime = src.Needtime;
+            this.Runningtime = 0;
+            this.Createtime = src.Createtime;
+            this.State = src.State;
+            this.Next = null;
+        }
         public int State { get; set; }//-1:FLAG 0:FINISH 1:RUNNING 2.READY 3:BLOCKED 4.WAIT
         public int Createtime { get ; }
         public int Needtime { get ; set ; }

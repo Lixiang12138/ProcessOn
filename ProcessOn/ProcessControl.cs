@@ -200,7 +200,7 @@ namespace ProcessOn
         private void StepButton_Click(object sender, EventArgs e)
         {
             //如果是运行状态时点击单步会强制暂停
-            if(RunningStatus != PAUSE_STATUS)
+            if(RunningStatus == RUNNING_STATUS)
                 ProcessController.Pause();
             RunningStatus = PAUSE_STATUS;
             ProcessController.OneTick();

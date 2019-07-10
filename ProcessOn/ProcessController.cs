@@ -74,8 +74,8 @@ namespace ProcessOn
             List<Process> list = new List<Process>();
             for (int i = 1; i <= size; i++)
             {
-                String name = "P" + i;
-                Process p = CreateRandomProcess(random,name, round, min_createtime, max_createtime, min_cputime, max_cputime, min_priority, max_priority);
+                string name = "P" + i;
+                Process p = CreateRandomProcess(random, name, round, min_createtime, max_createtime, min_cputime, max_cputime, min_priority, max_priority);
                 list.Add(p);
             }
             return list;
