@@ -1,4 +1,7 @@
 #include<bits/stdc++.h>
+using namespace std;
+//  Thanks for Nakochi's blog and code. See: https://codeforces.com/blog/entry/8576
+ 
 #define BASE 100000000
 #define LEN 20
 #define LL long long
@@ -15,7 +18,7 @@ class BB   //BigInterger
 public:
     LL a[330];
     int len;
-} nn[1001];
+} fac_n[1001];
 void mul(BIG a, BIG b, BIG &c)   //a*b==>c
 {
     int i, j;
@@ -107,7 +110,7 @@ void minus1(BIG &a)
     if (a.a[a.len - 1] == 0)
         a.len--;
 }
-void minus(BIG a, BIG b, BIG &c)   //a-b == c;
+void minus2(BIG a, BIG b, BIG &c)   //a-b == c;
 {
     int i;
     for (i = 0; i < b.len; i++)
@@ -125,9 +128,9 @@ void print(BIG &a)
     int i;
     printf("len = %d\n", a.len);
     for (i = LEN - 1; i >= a.len; i--)
-        printf("00000000  ");
+        printf("00000000 ");
     for (i = a.len - 1; i >= 0; i--)
-        printf("I64d ", a.a[i]);
+        printf("%I64d ", a.a[i]);
     printf("\n");
 }
 void get_big_div()   //a/b ==> c,a,b,c are BigIntegers
@@ -170,6 +173,7 @@ void f1()
     low.len = 11;
     high.a[10] = 20;
     high.len = 11;
+    //  mid = ln(N)
     while (cmp(low, high) < 0)
     {
         add(low, high, mid);
@@ -198,32 +202,49 @@ void f1()
     tmp.a[9] = 50000000;
     tmp.len = 11;
     memset(low.a, 0, sizeof(low.a));
+    //  low = ln(N) * (N + 0.5)
     mul(mid, tmp, low);
+ 
+    //  mid = ln(N) * (N + 0.5)
     mid = low;
+ 
+    //  tmp = N
     memset(tmp.a, 0, sizeof(tmp.a));
     tmp.a[10] = (LL)N;
     tmp.len = 11;
-    minus(mid, tmp, mid);
+ 
+    //  mid = ln(N) * (N + 0.5) - N
+    minus2(mid, tmp, mid);
+ 
+    //  tmp = ln(sqrt(2 * PI))
     memset(tmp.a, 0, sizeof(tmp.a));
     tmp.a[9] = 91893853;
     tmp.a[8] = 32046727;
     tmp.a[7] = 41780329;
     tmp.a[6] = 73640562;
     tmp.len = 10;
+ 
+    //  mid = ln(N) * (N + 0.5) - N + ln(sqrt(2 * PI))
+    //  Base Stirling's formula
     add(mid, tmp, mid);
+ 
+    //  mid = Complete Stirling's series 
+    //  See here: https://oeis.org/A046969
     memset(tmp.a, 0, sizeof(tmp.a));
     tmp.a[10] = 1;
     tmp.len = 11;
     div(tmp, 12);
     div(tmp, N);
     add(tmp, mid, mid);
+ 
     memset(tmp.a, 0, sizeof(tmp.a));
     tmp.a[10] = 1;
     tmp.len = 11;
     div(tmp, 360);
     for (i = 0; i < 3; i++)
         div(tmp, N);
-    minus(mid, tmp, mid);
+    minus2(mid, tmp, mid);
+ 
     memset(tmp.a, 0, sizeof(tmp.a));
     tmp.a[10] = 1;
     tmp.len = 11;
@@ -231,6 +252,10 @@ void f1()
     for (i = 0; i < 5; i++)
         div(tmp, N);
     add(mid, tmp, mid);
+    //  NB!!!!!!!!!!!!!
+ 
+    //  ten = ln(10)
+    //  convert ln(N!) to log(N!) by dividing(using binary search instead) ln(10)
     ten.a[10] = 2;
     ten.a[9] = 30258509;
     ten.a[8] = 29940456;
@@ -244,16 +269,24 @@ void f1()
     ten.a[0] = 6567382;
     ten.len = 11;
     get_big_div();
+ 
+    //  get the decimal (PURE) part of mid = log(N!)
+    //  removing the tailing '0' of N! in DEC
     for (i = 10; i < LEN; i++)
         mid.a[i] = 0;
     for (i = 9; i >= 0 && mid.a[i] == 0; i--);
     mid.len = i + 1;
+ 
+    //  convert PURE log(N!) to PURE ln(N)
     memset(power.a, 0, sizeof(power.a));
     mul(ten, mid, power);
+ 
+    //  Taylor series of Exponential function
     memset(mm[0].a, 0, sizeof(mm[0].a));
     mm[0].a[10] = 1;
     mm[0].len = 11;
     tmp = mm[0];
+    //  Since K won't be greater than 100, we just calculate the first 100 items
     for (i = 1; i <= 100; i++)
     {
         memset(mm[i].a, 0, sizeof(mm[i].a));
@@ -281,7 +314,7 @@ void f2()
     memset(kk, 0, sizeof(kk));
     for (i = 0; i < L / 8 + 2; i++)
     {
-        tt = nn[N].a[i];
+        tt = fac_n[N].a[i];
         for (j = 0; j < 8; j++)
             kk[ii++] = (int)(tt % 10), tt /= 10;
     }
@@ -315,10 +348,10 @@ void output(LL temp[], int l)
 void f3()
 {
     int i;
-    if (N <= 100)
+    if (N <= 1)
     {
-        for (i = nn[N].len - 1; i >= 0 && nn[N].a[i] == 0; i--);
-        output(nn[N].a, i + 1);
+        for (i = fac_n[N].len - 1; i >= 0 && fac_n[N].a[i] == 0; i--);
+        output(fac_n[N].a, i + 1);
         return;
     }
     f1();
@@ -329,21 +362,21 @@ void init_bb()   //N<=1000,calculate all N!
 {
     int i, j;
     for (i = 0; i < 1001; i++)
-        memset(nn[i].a, 0, sizeof(nn[i].a));
-    nn[1].a[0] = 1;
-    nn[1].len = 1;
+        memset(fac_n[i].a, 0, sizeof(fac_n[i].a));
+    fac_n[1].a[0] = 1;
+    fac_n[1].len = 1;
     for (i = 2; i < 1001; i++)
     {
-        for (j = 0; j < nn[i - 1].len; j++)
-            nn[i].a[j] = nn[i - 1].a[j] * (LL)i;
-        for (j = 0; j < nn[i - 1].len; j++)
+        for (j = 0; j < fac_n[i - 1].len; j++)
+            fac_n[i].a[j] = fac_n[i - 1].a[j] * (LL)i;
+        for (j = 0; j < fac_n[i - 1].len; j++)
         {
-            nn[i].a[j + 1] += nn[i].a[j] / BASE;
-            nn[i].a[j] %= BASE;
+            fac_n[i].a[j + 1] += fac_n[i].a[j] / BASE;
+            fac_n[i].a[j] %= BASE;
         }
-        nn[i].len = nn[i - 1].len;
-        if (nn[i].a[nn[i - 1].len])
-            nn[i].len++;
+        fac_n[i].len = fac_n[i - 1].len;
+        if (fac_n[i].a[fac_n[i - 1].len])
+            fac_n[i].len++;
     }
 }
 int main()
